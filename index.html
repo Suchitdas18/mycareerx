@@ -1458,21 +1458,22 @@
                         </ul>
                     </div>
                     <div class="smart-form" style="border: 1px solid var(--border);">
-                        <form
-                            onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'text-align: center; padding: 2rem;\'><i class=\'fas fa-user-astronaut\' style=\'font-size: 3rem; color: var(--primary); margin-bottom: 1rem;\'></i><h3 style=\'color: var(--primary); margin-bottom: 1rem;\'>Application Sent!</h3><p>We will review your credentials and reach out on WhatsApp within 48 hours for onboard screening.</p></div>'; this.scrollIntoView({ behavior: 'smooth', block: 'center' });">
+                        <form id="mentorForm" onsubmit="event.preventDefault(); submitMentor();">
                             <div class="input-group">
                                 <label>Full Name</label>
-                                <input type="text" class="input-control" placeholder="e.g. Vikram Singh" required>
+                                <input type="text" id="m-name" class="input-control" placeholder="e.g. Vikram Singh"
+                                    required>
                             </div>
 
                             <div class="form-row">
                                 <div class="input-group">
                                     <label>Institute / Org</label>
-                                    <input type="text" class="input-control" placeholder="e.g. IIT Delhi" required>
+                                    <input type="text" id="m-org" class="input-control" placeholder="e.g. IIT Delhi"
+                                        required>
                                 </div>
                                 <div class="input-group">
                                     <label>Expertise Domain</label>
-                                    <select class="input-control" required>
+                                    <select id="m-domain" class="input-control" required>
                                         <option value="" disabled selected>Select...</option>
                                         <option>Engineering (JEE)</option>
                                         <option>Medical (NEET)</option>
@@ -1486,27 +1487,29 @@
                             <div class="form-row">
                                 <div class="input-group">
                                     <label>Experience (Yrs)</label>
-                                    <input type="number" class="input-control" placeholder="e.g. 2" required>
+                                    <input type="number" id="m-exp" class="input-control" placeholder="e.g. 2" required>
                                 </div>
                                 <div class="input-group">
                                     <label>Hourly Rate (₹)</label>
-                                    <input type="number" class="input-control" placeholder="Leave 0 for Free Mode">
+                                    <input type="number" id="m-rate" class="input-control"
+                                        placeholder="Leave 0 for Free Mode">
                                 </div>
                             </div>
 
                             <div class="input-group">
                                 <label>WhatsApp Number</label>
-                                <input type="tel" class="input-control" placeholder="+91 00000 00000" required>
+                                <input type="tel" id="m-phone" class="input-control" placeholder="+91 00000 00000"
+                                    required>
                             </div>
 
                             <div class="input-group">
                                 <label>Short Bio</label>
-                                <textarea class="input-control"
+                                <textarea id="m-bio" class="input-control"
                                     placeholder="Briefly detail your achievements and how you can help students..."
                                     required></textarea>
                             </div>
 
-                            <button type="submit" class="btn btn-outline"
+                            <button type="submit" id="submitMentorBtn" class="btn btn-outline"
                                 style="width: 100%; font-size: 1.125rem;">Apply as Mentor</button>
                         </form>
                     </div>
@@ -1743,6 +1746,68 @@
 
             if (mentorInput) mentorInput.value = mentorName;
             if (typeInput) typeInput.value = sessionType;
+        }
+
+        // Submit Mentor Application Logic
+        async function submitMentor() {
+            const formWrapper = document.getElementById('mentorForm').parentElement;
+            const submitBtn = document.getElementById('submitMentorBtn');
+
+            // Get payload mapping it into the same structure so it fits in 1 Google Sheet!
+            const rate = document.getElementById('m-rate').value || '0';
+            const exp = document.getElementById('m-exp').value;
+            const bio = document.getElementById('m-bio').value;
+            const domain = document.getElementById('m-domain').value;
+
+            const payload = {
+                name: document.getElementById('m-name').value,
+                schoolName: document.getElementById('m-org').value + ' (Mentor App)',
+                primaryNumber: document.getElementById('m-phone').value,
+                secondaryNumber: `Rate: ₹${rate}/hr, Exp: ${exp}yrs`, // Cleverly storing mentor data in unused fields
+                email: 'N/A',
+                tenthPercent: 'Mentor Application',
+                twelfthPercent: 'N/A',
+                sessionType: 'Mentor Application', // Flags to you that this is a mentor applying!
+                appointmentDate: new Date().toLocaleDateString(), // Today
+                mentorRequired: `Domain: ${domain} | Bio: ${bio.substring(0, 50)}...` // Shove the bio into the notes
+            };
+
+            // Loading state
+            submitBtn.textContent = 'Sending Application...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/book', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    formWrapper.innerHTML = `
+                        <div style="text-align: center; padding: 3rem 1rem; animation: reveal 0.5s ease;">
+                            <i class="fas fa-user-astronaut" style="font-size: 4rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
+                            <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">Application Sent!</h3>
+                            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">We have received your credentials. Our vetting team will reach out to you on WhatsApp within 48 hours for onboard screening.</p>
+                        </div>
+                    `;
+                    formWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    alert('Error: ' + result.message);
+                    submitBtn.textContent = 'Apply as Mentor';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                alert('Connection error. Please try again.');
+                submitBtn.textContent = 'Apply as Mentor';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
         }
     </script>
 </body>
