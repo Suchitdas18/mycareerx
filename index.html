@@ -817,6 +817,12 @@
             resize: vertical;
         }
 
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
         /* Footer */
         footer {
             background: white;
@@ -940,6 +946,10 @@
                 padding: 3rem;
             }
 
+            .smart-form {
+                padding: 2rem;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
             }
@@ -982,6 +992,11 @@
 
             .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+                gap: 0;
             }
 
             .footer-grid {
@@ -1339,7 +1354,7 @@
                                     required>
                             </div>
 
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-row">
                                 <div class="input-group">
                                     <label>Primary Number *</label>
                                     <input type="tel" id="b-phone1" class="input-control" placeholder="+91 00000 00000"
@@ -1357,7 +1372,7 @@
                                     placeholder="jane@example.com (Optional)">
                             </div>
 
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-row">
                                 <div class="input-group">
                                     <label>10th Percentile *</label>
                                     <input type="text" id="b-10th" class="input-control" placeholder="e.g. 95%"
@@ -1370,7 +1385,7 @@
                                 </div>
                             </div>
 
-                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-row">
                                 <div class="input-group">
                                     <label>Session Type *</label>
                                     <select id="b-type" class="input-control" required>
@@ -1392,6 +1407,89 @@
 
                             <button type="submit" id="submitBtn" class="btn btn-primary"
                                 style="width: 100%; font-size: 1.125rem;">Schedule Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Become a Mentor (Form Section) -->
+    <section id="become-mentor" style="margin-top: 2rem;">
+        <div class="container reveal">
+            <div class="form-section"
+                style="background: var(--surface); color: var(--text-main); border: 1px solid var(--border);">
+                <!-- Reverse grid visually keeping layout interesting -->
+                <div class="form-grid" style="direction: rtl;">
+                    <div class="form-content" style="direction: ltr;">
+                        <h2 style="color: var(--text-main);">Give Back. <br><span style="color: var(--primary);">Become
+                                a Mentor.</span></h2>
+                        <p style="color: var(--text-muted);">Are you a top performer at a prestigious institute? Join
+                            our elite network, guide the next generation, and shape careers on your own flexible
+                            schedule.</p>
+                        <ul style="list-style: none; margin-top: 2rem;">
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Set your own hours and rates.</li>
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Build your personal brand.</li>
+                            <li style="display: flex; align-items: center; gap: 1rem;"><i class="fas fa-check-circle"
+                                    style="color: var(--success); font-size: 1.25rem;"></i> Make a literal difference in
+                                someone's life.</li>
+                        </ul>
+                    </div>
+                    <div class="smart-form" style="direction: ltr; border: 1px solid var(--border);">
+                        <form
+                            onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'text-align: center; padding: 2rem;\'><i class=\'fas fa-user-astronaut\' style=\'font-size: 3rem; color: var(--primary); margin-bottom: 1rem;\'></i><h3 style=\'color: var(--primary); margin-bottom: 1rem;\'>Application Sent!</h3><p>We will review your credentials and reach out on WhatsApp within 48 hours for onboard screening.</p></div>';">
+                            <div class="input-group">
+                                <label>Full Name</label>
+                                <input type="text" class="input-control" placeholder="e.g. Vikram Singh" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Institute / Org</label>
+                                    <input type="text" class="input-control" placeholder="e.g. IIT Delhi" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Expertise Domain</label>
+                                    <select class="input-control" required>
+                                        <option value="" disabled selected>Select...</option>
+                                        <option>Engineering (JEE)</option>
+                                        <option>Medical (NEET)</option>
+                                        <option>Law / CLAT</option>
+                                        <option>MBA / Management</option>
+                                        <option>Study Abroad</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Experience (Yrs)</label>
+                                    <input type="number" class="input-control" placeholder="e.g. 2" required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Hourly Rate (₹)</label>
+                                    <input type="number" class="input-control" placeholder="Leave 0 for Free Mode">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label>WhatsApp Number</label>
+                                <input type="tel" class="input-control" placeholder="+91 00000 00000" required>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Short Bio</label>
+                                <textarea class="input-control"
+                                    placeholder="Briefly detail your achievements and how you can help students..."
+                                    required></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-outline"
+                                style="width: 100%; font-size: 1.125rem;">Apply as Mentor</button>
                         </form>
                     </div>
                 </div>
