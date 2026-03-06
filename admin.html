@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyCareerX - Executive Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4F46E5;
+            --primary-dark: #3730A3;
+            --secondary: #0EA5E9;
+            --bg-body: #FAFAFA;
+            --surface: #FFFFFF;
+            --text-main: #0F172A;
+            --text-muted: #64748B;
+            --border: #E2E8F0;
+            --success: #10B981;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05);
+            --radius-md: 12px;
+            --radius-lg: 20px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            padding: 1rem 2rem;
+            background: var(--surface);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #4F46E5 0%, #0EA5E9 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Auth Screen */
+        #auth-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+        }
+
+        .auth-card {
+            background: var(--surface);
+            padding: 3rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin: 1.5rem 0;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .input-control:focus {
+            border-color: var(--primary);
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 100px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: opacity 0.2s;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        /* Dashboard Screen */
+        #dashboard-screen {
+            display: none;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-muted);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Premium Table */
+        .table-container {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border);
+            overflow-x: auto;
+            box-shadow: var(--shadow-sm);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th,
+        td {
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            background: #F8FAFC;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.875rem;
+            white-space: nowrap;
+        }
+
+        td {
+            font-size: 0.95rem;
+            color: #334155;
+        }
+
+        tbody tr:hover {
+            background: #F8FAFC;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.3rem 0.75rem;
+            border-radius: 100px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: #EEF2FF;
+            color: var(--primary);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="/" class="logo">
+            <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+            MyCareerX Admin
+        </a>
+        <div style="font-size: 0.875rem; color: var(--text-muted); font-weight: 600;"><i class="fas fa-lock"
+                style="margin-right:0.25rem;"></i> Secure Portal</div>
+    </header>
+
+    <div class="container">
+        <!-- Login Screen -->
+        <div id="auth-screen">
+            <div class="auth-card">
+                <div class="logo-icon"
+                    style="margin: 0 auto 1.5rem auto; width: 56px; height: 56px; font-size: 1.5rem;">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h2>Executive Login</h2>
+                <p style="color: var(--text-muted); font-size: 0.875rem; margin-top: 0.5rem;">Enter the master password
+                    to view incoming student leads.</p>
+                <form onsubmit="event.preventDefault(); login();">
+                    <input type="password" id="admin-pass" class="input-control" placeholder="Dashboard Password"
+                        required>
+                    <button type="submit" id="login-btn" class="btn">Access Dashboard <i
+                            class="fas fa-arrow-right"></i></button>
+                    <p id="error-msg"
+                        style="color: #EF4444; font-size: 0.875rem; margin-top: 1rem; display: none; font-weight: 600;">
+                        Incorrect matching password.</p>
+                </form>
+                <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 2rem;">Default password is
+                    <strong>secret123</strong> unless changed in Vercel.</p>
+            </div>
+        </div>
+
+        <!-- Dashboard Screen -->
+        <div id="dashboard-screen">
+            <div class="dashboard-header">
+                <div>
+                    <h2 style="font-size: 2rem; margin-bottom: 0.25rem;">Live Bookings</h2>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;">Synced securely in real-time from Google
+                        Sheets Database.</p>
+                </div>
+                <button onclick="fetchData()" class="btn"
+                    style="width: auto; padding: 0.75rem 1.5rem; font-size: 0.95rem; background: var(--surface); color: var(--text-main); border: 1px solid var(--border); box-shadow: var(--shadow-sm);"><i
+                        class="fas fa-sync-alt"></i> Refresh Data</button>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="total-bookings">0</div>
+                    <div class="stat-label">Total Leads Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="premium-bookings" style="color: #D97706;">0</div>
+                    <div class="stat-label">Premium Mentorship</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="today-bookings" style="color: var(--success);">0</div>
+                    <div class="stat-label">New Leads Today</div>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Received On</th>
+                            <th>Student Details</th>
+                            <th>School</th>
+                            <th>Academic Profile</th>
+                            <th>Plan Type</th>
+                            <th>Desired Mentor</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Data injected here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let adminToken = '';
+
+        async function login() {
+            const pass = document.getElementById('admin-pass').value;
+            const btn = document.getElementById('login-btn');
+            const error = document.getElementById('error-msg');
+
+            btn.innerHTML = 'Verifying... <i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+            error.style.display = 'none';
+
+            try {
+                // Test the token
+                const res = await fetch('/api/bookings?token=' + encodeURIComponent(pass));
+                const data = await res.json();
+
+                if (data.success) {
+                    adminToken = pass;
+                    document.getElementById('auth-screen').style.display = 'none';
+                    document.getElementById('dashboard-screen').style.display = 'block';
+                    renderData(data.data);
+                } else {
+                    error.style.display = 'block';
+                    btn.innerHTML = 'Access Dashboard <i class="fas fa-arrow-right"></i>';
+                    btn.disabled = false;
+                }
+            } catch (e) {
+                error.textContent = 'Connection error processing request.';
+                error.style.display = 'block';
+                btn.innerHTML = 'Access Dashboard <i class="fas fa-arrow-right"></i>';
+                btn.disabled = false;
+            }
+        }
+
+        async function fetchData() {
+            const btn = document.querySelector('.dashboard-header .btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Syncing...';
+            btn.disabled = true;
+
+            const res = await fetch('/api/bookings?token=' + encodeURIComponent(adminToken));
+            const data = await res.json();
+
+            if (data.success) {
+                renderData(data.data);
+            }
+
+            btn.innerHTML = originalText;
+            btn.disabled = false;
+        }
+
+        function renderData(rows) {
+            const tbody = document.getElementById('table-body');
+            tbody.innerHTML = '';
+
+            // Guard against empty DB (0 or 1 Header row)
+            if (!rows || rows.length <= 1) {
+                tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 4rem 1rem; color: #64748B;"><i class="fas fa-inbox" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i><br>No bookings received yet! Share your website to get started.</td></tr>';
+                document.getElementById('total-bookings').textContent = '0';
+                document.getElementById('premium-bookings').textContent = '0';
+                document.getElementById('today-bookings').textContent = '0';
+                return;
+            }
+
+            // Exclude header row if the first index array element looks like "timestamp" (Google Sheets row 1)
+            const actualData = (rows[0][0] && rows[0][0].toLowerCase().includes('time')) ? rows.slice(1) : rows;
+
+            // Reverse so newest bookings are at the top
+            const reversedData = [...actualData].reverse();
+
+            let premiumCount = 0;
+            let todayCount = 0;
+            const todayStr = new Date().toLocaleDateString();
+
+            reversedData.forEach(row => {
+                const tr = document.createElement('tr');
+
+                const timestamp = row[0] || 'Unknown Time';
+                if (timestamp.includes(todayStr) || timestamp.includes('Today')) {
+                    todayCount++;
+                }
+
+                const name = row[1] || 'Guest Student';
+                const school = row[2] || 'Not specified';
+                const phone = row[3] || 'N/A';
+                const email = row[5] || '';
+                const percent10th = row[6] || 'N/A';
+                const plan = row[9] || 'Unknown';
+                const mentor = row[10] || 'Any Expert';
+
+                if (plan === 'Premium') premiumCount++;
+                const badgeColor = plan === 'Premium' ? 'background: #FEF3C7; color: #D97706;' : 'background: #F1F5F9; color: #475569;';
+
+                tr.innerHTML = `
+                    <td style="color: var(--text-muted); font-size: 0.85rem;"><i class="far fa-clock" style="margin-right: 0.3rem;"></i> ${timestamp}</td>
+                    <td>
+                        <div style="font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">${name}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-phone-alt"></i> ${phone}</div>
+                    </td>
+                    <td>${school}</td>
+                    <td style="font-weight: 600;">10th: ${percent10th}</td>
+                    <td><span class="badge" style="${badgeColor}">${plan}</span></td>
+                    <td style="font-weight: 500;">${mentor}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Update big number metrics on dashboard
+            document.getElementById('total-bookings').textContent = actualData.length;
+            document.getElementById('premium-bookings').textContent = premiumCount;
+            document.getElementById('today-bookings').textContent = todayCount;
+        }
+    </script>
+</body>
+
+</html>

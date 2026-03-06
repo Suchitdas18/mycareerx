@@ -125,6 +125,33 @@ app.post('/api/book', async (req, res) => {
     }
 });
 
+// Endpoint to fetch bookings for the Admin Dashboard securely
+app.get('/api/bookings', async (req, res) => {
+    try {
+        // Simple password protection Check
+        const token = req.query.token;
+        const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'secret123';
+        
+        if (token !== ADMIN_PASS) {
+            return res.status(401).json({ success: false, message: 'Unauthorized: Incorrect Password' });
+        }
+
+        if (!sheets) {
+            return res.status(500).json({ success: false, message: 'Google Sheets not initialized yet' });
+        }
+
+        const response = await sheets.spreadsheets.values.get({
+            spreadsheetId: SPREADSHEET_ID,
+            range: 'Sheet1!A:K',
+        });
+
+        res.json({ success: true, data: response.data.values || [] });
+    } catch (error) {
+        console.error('Error fetching bookings:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch data' });
+    }
+});
+
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
