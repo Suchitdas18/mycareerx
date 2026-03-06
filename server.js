@@ -280,6 +280,35 @@ app.post('/api/admin/action', async (req, res) => {
     }
 });
 
+// Get Public Mentors (Only Approved)
+app.get('/api/public/mentors', async (req, res) => {
+    try {
+        if (!sheets) return res.json({ success: false, data: [] });
+        const response = await sheets.spreadsheets.values.get({
+            spreadsheetId: MENTORS_SPREADSHEET_ID,
+            range: 'Sheet1!A:I'
+        });
+        const rows = response.data.values || [];
+        // Only return rows where column index 8 includes 'approv'
+        const approved = rows.filter((row, i) => i > 0 && row[8] && row[8].toLowerCase().includes('approv'));
+        
+        // Strip out private data like phone numbers
+        const safeData = approved.map(row => ({
+            name: row[1] || 'Mentor',
+            org: row[2] || '',
+            domain: row[3] || '',
+            exp: row[4] || '',
+            rate: row[5] || '0',
+            bio: row[7] || ''
+        }));
+
+        res.json({ success: true, data: safeData });
+    } catch (error) {
+        console.error('Error fetching public mentors:', error);
+        res.status(500).json({ success: false, data: [] });
+    }
+});
+
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);

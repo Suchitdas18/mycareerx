@@ -1253,6 +1253,19 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Dynamic Community Mentors -->
+            <div id="dynamic-mentors-container" style="display: none; margin-top: 4rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Community Mentors <span class="badge"
+                        style="background:#EEF2FF; color:var(--primary); font-size:0.8rem; vertical-align:middle; margin-left:0.5rem; padding:0.2rem 0.5rem; border-radius:10px;">New</span>
+                </h3>
+                <div id="dynamic-mentors-grid" class="grid-3 reveal active">
+                    <!-- Approved mentors will be injected here via JS -->
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="#book-session" class="btn btn-outline" style="min-width: 200px;">View More Mentors</a>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1678,6 +1691,49 @@
                 mobileMenuBtn.querySelector('i').classList.add('fa-bars');
             });
         });
+
+        // Load Dynamic Mentors from API
+        async function loadPublicMentors() {
+            try {
+                const res = await fetch('/api/public/mentors');
+                const result = await res.json();
+
+                if (result.success && result.data.length > 0) {
+                    const container = document.getElementById('dynamic-mentors-container');
+                    const grid = document.getElementById('dynamic-mentors-grid');
+                    grid.innerHTML = ''; // clear
+
+                    result.data.forEach(mentor => {
+                        const rateText = mentor.rate === '0' || !mentor.rate ? 'Free' : `₹${mentor.rate} <span style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>`;
+                        const badgeType = mentor.rate === '0' || !mentor.rate ? 'badge-free' : 'badge-premium';
+                        const badgeText = mentor.rate === '0' || !mentor.rate ? 'Free Session' : 'Community';
+
+                        grid.innerHTML += `
+                            <div class="mentor-card" style="animation: reveal 0.5s ease;">
+                                <span class="mentor-badge ${badgeType}">${badgeText}</span>
+                                <div class="mentor-avatar" style="background: var(--surface); color: var(--primary); border: 2px solid var(--border);"><i class="fas fa-check-circle"></i></div>
+                                <h3 class="mentor-name">${mentor.name}</h3>
+                                <p class="mentor-role">${mentor.org}</p>
+                                <div class="mentor-tags">
+                                    <span class="mentor-tag" style="background:#F1F5F9; color:#475569;">${mentor.domain}</span>
+                                    <span class="mentor-tag" style="background:#F1F5F9; color:#475569;">Exp: ${mentor.exp}yr</span>
+                                </div>
+                                <p class="mentor-price">${rateText}</p>
+                                <a href="#book-session" onclick="prefillMentor('${mentor.name}', 'Community')" class="btn btn-outline" style="width: 100%;">Book Session</a>
+                            </div>
+                        `;
+                    });
+
+                    container.style.display = 'block';
+                }
+            } catch (error) {
+                console.error("Failed to fetch public mentors", error);
+            }
+        }
+
+        // Execute on load
+        document.addEventListener('DOMContentLoaded', loadPublicMentors);
+
         // Submit Booking Form Logic
         async function submitBooking() {
             const form = document.getElementById('bookingForm');
