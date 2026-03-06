@@ -24,6 +24,10 @@ const SPREADSHEET_ID = '1vjozZtj_G2Mj1PXP3I610ekuvvpJaYSe7ue_kymrQwg';
 // Setup Google Auth (Check Vercel env variable first, then fallback to local file)
 let sheets = null;
 try {
+    if (process.env.VERCEL && !process.env.GOOGLE_CREDENTIALS) {
+        throw new Error("Missing GOOGLE_CREDENTIALS in Vercel. You must add the JSON content to the Environment Variables in Vercel settings and then Redeploy.");
+    }
+
     if (process.env.GOOGLE_CREDENTIALS) {
         // We are on Vercel
         let creds = process.env.GOOGLE_CREDENTIALS;
