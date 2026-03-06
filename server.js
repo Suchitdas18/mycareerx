@@ -222,6 +222,64 @@ app.get('/api/mentors_list', async (req, res) => {
     }
 });
 
+// Admin Operations Endpoint (Edit, Delete, Manage)
+app.post('/api/admin/action', async (req, res) => {
+    try {
+        const { token, action, type, rowIndex, rowData } = req.body;
+        const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'secret123';
+        
+        if (token !== ADMIN_PASS) {
+            return res.status(401).json({ success: false, message: 'Unauthorized' });
+        }
+        if (!sheets) {
+            return res.status(500).json({ success: false, message: 'Google Sheets not initialized yet' });
+        }
+
+        const spreadsheetId = type === 'student' ? SPREADSHEET_ID : MENTORS_SPREADSHEET_ID;
+        const range = type === 'student' ? `Sheet1!A${rowIndex}:K${rowIndex}` : `Sheet1!A${rowIndex}:I${rowIndex}`;
+
+        if (action === 'delete') {
+            // Full Row Deletion via batchUpdate pushes lower rows up correctly
+            const sheetMetadata = await sheets.spreadsheets.get({ spreadsheetId });
+            const sheet = sheetMetadata.data.sheets.find(s => s.properties.title === 'Sheet1');
+            const sheetId = sheet ? sheet.properties.sheetId : 0; // fallback to 0
+
+            await sheets.spreadsheets.batchUpdate({
+                spreadsheetId,
+                requestBody: {
+                    requests: [
+                        {
+                            deleteDimension: {
+                                range: {
+                                    sheetId: sheetId,
+                                    dimension: 'ROWS',
+                                    startIndex: rowIndex - 1, // 0-indexed API
+                                    endIndex: rowIndex
+                                }
+                            }
+                        }
+                    ]
+                }
+            });
+        } else if (action === 'update') {
+            // Overwrite row cells with new edited inputs
+            await sheets.spreadsheets.values.update({
+                spreadsheetId,
+                range,
+                valueInputOption: 'USER_ENTERED',
+                requestBody: {
+                    values: [rowData]
+                }
+            });
+        }
+
+        res.json({ success: true, message: 'Success' });
+    } catch (error) {
+        console.error('Error executing admin action:', error);
+        res.status(500).json({ success: false, message: 'Failed to complete action' });
+    }
+});
+
 if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
     app.listen(PORT, () => {
         console.log(`Server is running on http://localhost:${PORT}`);
