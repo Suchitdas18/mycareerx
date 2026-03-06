@@ -1130,8 +1130,8 @@
                         <span class="mentor-tag">Mock Strategy</span>
                     </div>
                     <p class="mentor-price">Free</p>
-                    <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20free%20session%20with%20Rahul%20Sharma"
-                        target="_blank" class="btn btn-outline" style="width: 100%;">Book Session</a>
+                    <a href="#book-session" onclick="prefillMentor('Rahul Sharma', 'Free')" class="btn btn-outline"
+                        style="width: 100%;">Book Session</a>
                 </div>
 
                 <!-- Free Mentor -->
@@ -1145,8 +1145,8 @@
                         <span class="mentor-tag">Biology Hack</span>
                     </div>
                     <p class="mentor-price">Free</p>
-                    <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20free%20session%20with%20Dr.%20Priya%20Verma"
-                        target="_blank" class="btn btn-outline" style="width: 100%;">Book Session</a>
+                    <a href="#book-session" onclick="prefillMentor('Dr. Priya Verma', 'Free')" class="btn btn-outline"
+                        style="width: 100%;">Book Session</a>
                 </div>
 
                 <!-- Free Mentor -->
@@ -1160,8 +1160,8 @@
                         <span class="mentor-tag">PI Prep</span>
                     </div>
                     <p class="mentor-price">Free</p>
-                    <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20free%20session%20with%20Arjun%20Mehta"
-                        target="_blank" class="btn btn-outline" style="width: 100%;">Book Session</a>
+                    <a href="#book-session" onclick="prefillMentor('Arjun Mehta', 'Free')" class="btn btn-outline"
+                        style="width: 100%;">Book Session</a>
                 </div>
             </div>
 
@@ -1181,8 +1181,8 @@
                         <p class="mentor-price">₹500 <span
                                 style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>
                         </p>
-                        <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20premium%20session%20with%20Vikram%20Singh"
-                            target="_blank" class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
+                        <a href="#book-session" onclick="prefillMentor('Vikram Singh', 'Premium')"
+                            class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
                     </div>
 
                     <!-- Premium Mentor -->
@@ -1198,8 +1198,8 @@
                         <p class="mentor-price">₹100 <span
                                 style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>
                         </p>
-                        <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20premium%20session%20with%20Ananya%20Patel"
-                            target="_blank" class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
+                        <a href="#book-session" onclick="prefillMentor('Ananya Patel', 'Premium')"
+                            class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
                     </div>
 
                     <!-- Premium Mentor -->
@@ -1215,8 +1215,8 @@
                         <p class="mentor-price">₹250 <span
                                 style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>
                         </p>
-                        <a href="https://wa.me/7684015067?text=Hi!%20I'd%20like%20to%20book%20a%20premium%20session%20with%20Karan%20Gupta"
-                            target="_blank" class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
+                        <a href="#book-session" onclick="prefillMentor('Karan Gupta', 'Premium')"
+                            class="btn btn-primary" style="width: 100%;">Hire Mentor</a>
                     </div>
                 </div>
             </div>
@@ -1616,6 +1616,15 @@
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
             }
+        }
+
+        // Prefill Mentor details when clicking cards
+        function prefillMentor(mentorName, sessionType) {
+            const mentorInput = document.getElementById('b-mentor');
+            const typeInput = document.getElementById('b-type');
+
+            if (mentorInput) mentorInput.value = mentorName;
+            if (typeInput) typeInput.value = sessionType;
         }
     </script>
 </body>
