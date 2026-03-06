@@ -24,31 +24,37 @@ const SPREADSHEET_ID = '1vjozZtj_G2Mj1PXP3I610ekuvvpJaYSe7ue_kymrQwg';
 // Setup Google Auth (Check Vercel env variable first, then fallback to local file)
 let sheets = null;
 try {
-    let authOptions = {
-        scopes: ['https://www.googleapis.com/auth/spreadsheets'],
-    };
-
     if (process.env.GOOGLE_CREDENTIALS) {
         // We are on Vercel
-        const creds = typeof process.env.GOOGLE_CREDENTIALS === 'string' 
-            ? JSON.parse(process.env.GOOGLE_CREDENTIALS) 
-            : process.env.GOOGLE_CREDENTIALS;
+        let creds = process.env.GOOGLE_CREDENTIALS;
+        if (typeof creds === 'string') {
+            creds = JSON.parse(creds);
+        }
             
         // Fix for Vercel escaping literal newlines in the private key string
         if (creds.private_key) {
             creds.private_key = creds.private_key.replace(/\\n/g, '\n');
         }
         
-        authOptions.credentials = creds;
+        const auth = new google.auth.GoogleAuth({
+            credentials: creds,
+            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+        sheets = google.sheets({ version: 'v4', auth });
+        console.log("✅ Google Auth initialized using Vercel Environment Variables");
+
     } else {
         // We are testing locally
-        authOptions.keyFile = './credentials.json';
+        const auth = new google.auth.GoogleAuth({
+            keyFile: './credentials.json',
+            scopes: ['https://www.googleapis.com/auth/spreadsheets'],
+        });
+        sheets = google.sheets({ version: 'v4', auth });
+        console.log("✅ Google Auth initialized using local credentials.json file");
     }
 
-    const auth = new google.auth.GoogleAuth(authOptions);
-    sheets = google.sheets({ version: 'v4', auth });
 } catch (error) {
-    console.warn("⚠️ Google Sheets setup error:", error.message);
+    console.error("⚠️ Google Sheets setup error:", error.message);
 }
 
 // Endpoint to handle booking form submissions
