@@ -1459,7 +1459,7 @@
                     </div>
                     <div class="smart-form" style="border: 1px solid var(--border);">
                         <form
-                            onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'text-align: center; padding: 2rem;\'><i class=\'fas fa-user-astronaut\' style=\'font-size: 3rem; color: var(--primary); margin-bottom: 1rem;\'></i><h3 style=\'color: var(--primary); margin-bottom: 1rem;\'>Application Sent!</h3><p>We will review your credentials and reach out on WhatsApp within 48 hours for onboard screening.</p></div>';">
+                            onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'text-align: center; padding: 2rem;\'><i class=\'fas fa-user-astronaut\' style=\'font-size: 3rem; color: var(--primary); margin-bottom: 1rem;\'></i><h3 style=\'color: var(--primary); margin-bottom: 1rem;\'>Application Sent!</h3><p>We will review your credentials and reach out on WhatsApp within 48 hours for onboard screening.</p></div>'; this.scrollIntoView({ behavior: 'smooth', block: 'center' });">
                             <div class="input-group">
                                 <label>Full Name</label>
                                 <input type="text" class="input-control" placeholder="e.g. Vikram Singh" required>
@@ -1719,6 +1719,8 @@
                             <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">Your appointment for <strong>${payload.appointmentDate}</strong> is confirmed. Our team will reach out on WhatsApp to finalize the time slot and share the meeting link.</p>
                         </div>
                     `;
+                    // Automatically scroll the user up to see the success message since the form height collapsed!
+                    formWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 } else {
                     alert('Error: ' + result.message);
                     submitBtn.textContent = 'Schedule Appointment';
