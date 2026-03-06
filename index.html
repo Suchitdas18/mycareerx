@@ -1263,7 +1263,8 @@
                     <!-- Approved mentors will be injected here via JS -->
                 </div>
                 <div style="text-align: center; margin-top: 3rem;">
-                    <a href="#book-session" class="btn btn-outline" style="min-width: 200px;">View More Mentors</a>
+                    <button id="view-more-mentors-btn" onclick="toggleMentors()" class="btn btn-outline"
+                        style="min-width: 200px; display: none;">View More Mentors</button>
                 </div>
             </div>
         </div>
@@ -1693,6 +1694,26 @@
         });
 
         // Load Dynamic Mentors from API
+        let mentorsExpanded = false;
+
+        function toggleMentors() {
+            const hiddenCards = document.querySelectorAll('.mentor-card.dynamic-hidden');
+            const btn = document.getElementById('view-more-mentors-btn');
+
+            if (!mentorsExpanded) {
+                hiddenCards.forEach(card => card.style.display = 'block');
+                btn.textContent = 'Show Less Mentors';
+                mentorsExpanded = true;
+            } else {
+                hiddenCards.forEach(card => card.style.display = 'none');
+                btn.textContent = 'View More Mentors';
+                mentorsExpanded = false;
+
+                // Scroll back to the mentors top smoothly
+                document.getElementById('dynamic-mentors-container').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         async function loadPublicMentors() {
             try {
                 const res = await fetch('/api/public/mentors');
@@ -1701,15 +1722,20 @@
                 if (result.success && result.data.length > 0) {
                     const container = document.getElementById('dynamic-mentors-container');
                     const grid = document.getElementById('dynamic-mentors-grid');
+                    const viewMoreBtn = document.getElementById('view-more-mentors-btn');
                     grid.innerHTML = ''; // clear
 
-                    result.data.forEach(mentor => {
+                    result.data.forEach((mentor, index) => {
                         const rateText = mentor.rate === '0' || !mentor.rate ? 'Free' : `₹${mentor.rate} <span style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>`;
                         const badgeType = mentor.rate === '0' || !mentor.rate ? 'badge-free' : 'badge-premium';
                         const badgeText = mentor.rate === '0' || !mentor.rate ? 'Free Session' : 'Community';
 
+                        // Hide mentors beyond the first 3 initially
+                        const displayStyle = index >= 3 ? 'display: none;' : '';
+                        const hiddenClass = index >= 3 ? 'dynamic-hidden' : '';
+
                         grid.innerHTML += `
-                            <div class="mentor-card" style="animation: reveal 0.5s ease;">
+                            <div class="mentor-card ${hiddenClass}" style="animation: reveal 0.5s ease; ${displayStyle}">
                                 <span class="mentor-badge ${badgeType}">${badgeText}</span>
                                 <div class="mentor-avatar" style="background: var(--surface); color: var(--primary); border: 2px solid var(--border);"><i class="fas fa-check-circle"></i></div>
                                 <h3 class="mentor-name">${mentor.name}</h3>
@@ -1723,6 +1749,10 @@
                             </div>
                         `;
                     });
+
+                    if (result.data.length > 3) {
+                        viewMoreBtn.style.display = 'inline-block';
+                    }
 
                     container.style.display = 'block';
                 }
