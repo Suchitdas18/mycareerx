@@ -23,7 +23,7 @@ const SPREADSHEET_ID = '1vjozZtj_G2Mj1PXP3I610ekuvvpJaYSe7ue_kymrQwg';
 
 // The ID from the URL of your Google Sheet for Mentors
 // Since you haven't made it yet, I will leave it blank. You MUST update this!
-const MENTORS_SPREADSHEET_ID = 'PLACEHOLDER_MENTOR_SHEET_ID'; 
+const MENTORS_SPREADSHEET_ID = '1AcjBb7LItvK_UZmHUsCj7bJw4d8Pjlxl1FHS65bsZIE'; 
 
 // Setup Google Auth (Check Vercel env variable first, then fallback to local file)
 let sheets = null;
