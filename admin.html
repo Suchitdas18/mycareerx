@@ -174,6 +174,37 @@
             letter-spacing: 0.05em;
         }
 
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .tab-btn:hover {
+            color: var(--primary);
+            background: #EEF2FF;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            background: #EEF2FF;
+        }
+
         /* Premium Table */
         .table-container {
             background: var(--surface);
@@ -256,7 +287,8 @@
                         Incorrect matching password.</p>
                 </form>
                 <p style="font-size: 0.75rem; color: #94A3B8; margin-top: 2rem;">Default password is
-                    <strong>secret123</strong> unless changed in Vercel.</p>
+                    <strong>secret123</strong> unless changed in Vercel.
+                </p>
             </div>
         </div>
 
@@ -273,7 +305,7 @@
                         class="fas fa-sync-alt"></i> Refresh Data</button>
             </div>
 
-            <div class="stats-grid">
+            <div class="stats-grid" id="students-stats">
                 <div class="stat-card">
                     <div class="stat-value" id="total-bookings">0</div>
                     <div class="stat-label">Total Leads Generated</div>
@@ -288,7 +320,14 @@
                 </div>
             </div>
 
-            <div class="table-container">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('students')"><i class="fas fa-user-graduate"></i>
+                    Student Leads</button>
+                <button class="tab-btn" onclick="switchTab('mentors')"><i class="fas fa-chalkboard-teacher"></i> Mentor
+                    Applications</button>
+            </div>
+
+            <div id="students-view" class="table-container">
                 <table>
                     <thead>
                         <tr>
@@ -305,11 +344,47 @@
                     </tbody>
                 </table>
             </div>
+
+            <div id="mentors-view" class="table-container" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Received On</th>
+                            <th>Applicant</th>
+                            <th>Institute</th>
+                            <th>Domain</th>
+                            <th>Experience / Rate</th>
+                            <th>Bio</th>
+                            <th>Status (Action)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mentors-body">
+                        <!-- Data injected here -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <script>
         let adminToken = '';
+        let currentTab = 'students';
+
+        function switchTab(tab) {
+            currentTab = tab;
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            if (tab === 'students') {
+                document.querySelectorAll('.tab-btn')[0].classList.add('active');
+                document.getElementById('students-view').style.display = 'block';
+                document.getElementById('students-stats').style.display = 'grid';
+                document.getElementById('mentors-view').style.display = 'none';
+            } else {
+                document.querySelectorAll('.tab-btn')[1].classList.add('active');
+                document.getElementById('students-view').style.display = 'none';
+                document.getElementById('students-stats').style.display = 'none';
+                document.getElementById('mentors-view').style.display = 'block';
+            }
+        }
 
         async function login() {
             const pass = document.getElementById('admin-pass').value;
@@ -330,6 +405,9 @@
                     document.getElementById('auth-screen').style.display = 'none';
                     document.getElementById('dashboard-screen').style.display = 'block';
                     renderData(data.data);
+
+                    // Also silently fetch mentors now that we are logged in
+                    fetchMentors();
                 } else {
                     error.style.display = 'block';
                     btn.innerHTML = 'Access Dashboard <i class="fas fa-arrow-right"></i>';
@@ -351,13 +429,61 @@
 
             const res = await fetch('/api/bookings?token=' + encodeURIComponent(adminToken));
             const data = await res.json();
+            if (data.success) renderData(data.data);
 
-            if (data.success) {
-                renderData(data.data);
-            }
+            await fetchMentors();
 
             btn.innerHTML = originalText;
             btn.disabled = false;
+        }
+
+        async function fetchMentors() {
+            try {
+                const res = await fetch('/api/mentors_list?token=' + encodeURIComponent(adminToken));
+                const data = await res.json();
+                if (data.success) renderMentors(data.data);
+            } catch (e) { console.error("Could not fetch mentors", e) }
+        }
+
+        function renderMentors(rows) {
+            const tbody = document.getElementById('mentors-body');
+            tbody.innerHTML = '';
+
+            if (!rows || rows.length <= 1) {
+                tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 4rem 1rem; color: #64748B;"><i class="fas fa-chalkboard-teacher" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i><br>No Mentor applications yet! Or you still need to set up the Google Sheet ID.</td></tr>';
+                return;
+            }
+
+            const actualData = (rows[0][0] && rows[0][0].toLowerCase().includes('time')) ? rows.slice(1) : rows;
+            const reversedData = [...actualData].reverse();
+
+            reversedData.forEach(row => {
+                const tr = document.createElement('tr');
+
+                const timestamp = row[0] || 'Unknown Time';
+                const name = row[1] || 'Unknown';
+                const org = row[2] || 'N/A';
+                const domain = row[3] || 'N/A';
+                const exp = row[4] || 'N/A';
+                const rate = row[5] || '0';
+                const phone = row[6] || '';
+                const bio = row[7] || '';
+                const status = row[8] || 'Pending';
+
+                tr.innerHTML = `
+                    <td style="color: var(--text-muted); font-size: 0.85rem;">${timestamp}</td>
+                    <td>
+                        <div style="font-weight: 700; color: var(--text-main); margin-bottom: 0.2rem;">${name}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-phone-alt"></i> ${phone}</div>
+                    </td>
+                    <td>${org}</td>
+                    <td><span class="badge">${domain}</span></td>
+                    <td style="font-weight: 600;">Exp: ${exp}yrs<br><span style="color:var(--text-muted); font-size:0.8rem">Rate: ₹${rate}/hr</span></td>
+                    <td style="max-width: 250px; font-size: 0.8rem; line-height: 1.4">${bio}</td>
+                    <td><button class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.8rem; border-radius: 6px;">Approve & Publish</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
         }
 
         function renderData(rows) {

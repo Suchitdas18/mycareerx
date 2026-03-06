@@ -18,8 +18,12 @@ const GOOGLE_SHEETS_CREDENTIALS = {
   // Add your service account JSON contents here later
 };
 
-// The ID from the URL of your Google Sheet
+// The ID from the URL of your Google Sheet for Students
 const SPREADSHEET_ID = '1vjozZtj_G2Mj1PXP3I610ekuvvpJaYSe7ue_kymrQwg'; 
+
+// The ID from the URL of your Google Sheet for Mentors
+// Since you haven't made it yet, I will leave it blank. You MUST update this!
+const MENTORS_SPREADSHEET_ID = 'PLACEHOLDER_MENTOR_SHEET_ID'; 
 
 // Setup Google Auth (Check Vercel env variable first, then fallback to local file)
 let sheets = null;
@@ -61,7 +65,7 @@ try {
     console.error("⚠️ Google Sheets setup error:", error.message);
 }
 
-// Endpoint to handle booking form submissions
+// Endpoint to handle booking form submissions (Students)
 app.post('/api/book', async (req, res) => {
     try {
         const {
@@ -125,6 +129,49 @@ app.post('/api/book', async (req, res) => {
     }
 });
 
+// Endpoint to handle mentor applications
+app.post('/api/mentor', async (req, res) => {
+    try {
+        if (MENTORS_SPREADSHEET_ID === 'PLACEHOLDER_MENTOR_SHEET_ID') {
+            return res.status(500).json({ success: false, message: 'Backend has not updated MENTORS_SPREADSHEET_ID config yet!' });
+        }
+
+        const { name, org, domain, exp, rate, phone, bio } = req.body;
+
+        if (!name || !org || !phone || !bio) {
+            return res.status(400).json({ success: false, message: 'Missing required fields' });
+        }
+
+        const newRow = [
+            new Date().toLocaleString(), // Timestamp
+            name,
+            org,
+            domain,
+            exp,
+            rate,
+            phone,
+            bio,
+            'Pending Review' // Status Column
+        ];
+
+        if (!sheets) {
+            return res.json({ success: true, message: 'Mentor saved locally! (Google Sheets setup required)' });
+        }
+
+        await sheets.spreadsheets.values.append({
+            spreadsheetId: MENTORS_SPREADSHEET_ID,
+            range: 'Sheet1!A:I', 
+            valueInputOption: 'USER_ENTERED',
+            requestBody: { values: [newRow] },
+        });
+
+        res.json({ success: true, message: 'Mentor application saved securely!' });
+    } catch (error) {
+        console.error('Error saving mentor app:', error);
+        res.status(500).json({ success: false, message: 'Failed to save to Mentor database.' });
+    }
+});
+
 // Endpoint to fetch bookings for the Admin Dashboard securely
 app.get('/api/bookings', async (req, res) => {
     try {
@@ -148,6 +195,29 @@ app.get('/api/bookings', async (req, res) => {
         res.json({ success: true, data: response.data.values || [] });
     } catch (error) {
         console.error('Error fetching bookings:', error);
+        res.status(500).json({ success: false, message: 'Failed to fetch data' });
+    }
+});
+
+// Endpoint to fetch mentor apps for Admin
+app.get('/api/mentors_list', async (req, res) => {
+    try {
+        const token = req.query.token;
+        const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'secret123';
+        if (token !== ADMIN_PASS) return res.status(401).json({ success: false, message: 'Unauthorized' });
+
+        if (MENTORS_SPREADSHEET_ID === 'PLACEHOLDER_MENTOR_SHEET_ID') {
+            return res.json({ success: true, data: [] }); // Returning empty if not setup so page doesn't crash
+        }
+
+        const response = await sheets.spreadsheets.values.get({
+            spreadsheetId: MENTORS_SPREADSHEET_ID,
+            range: 'Sheet1!A:I',
+        });
+
+        res.json({ success: true, data: response.data.values || [] });
+    } catch (error) {
+        console.error('Error fetching mentors:', error);
         res.status(500).json({ success: false, message: 'Failed to fetch data' });
     }
 });

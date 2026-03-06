@@ -1753,23 +1753,14 @@
             const formWrapper = document.getElementById('mentorForm').parentElement;
             const submitBtn = document.getElementById('submitMentorBtn');
 
-            // Get payload mapping it into the same structure so it fits in 1 Google Sheet!
-            const rate = document.getElementById('m-rate').value || '0';
-            const exp = document.getElementById('m-exp').value;
-            const bio = document.getElementById('m-bio').value;
-            const domain = document.getElementById('m-domain').value;
-
             const payload = {
                 name: document.getElementById('m-name').value,
-                schoolName: document.getElementById('m-org').value + ' (Mentor App)',
-                primaryNumber: document.getElementById('m-phone').value,
-                secondaryNumber: `Rate: ₹${rate}/hr, Exp: ${exp}yrs`, // Cleverly storing mentor data in unused fields
-                email: 'N/A',
-                tenthPercent: 'Mentor Application',
-                twelfthPercent: 'N/A',
-                sessionType: 'Mentor Application', // Flags to you that this is a mentor applying!
-                appointmentDate: new Date().toLocaleDateString(), // Today
-                mentorRequired: `Domain: ${domain} | Bio: ${bio.substring(0, 50)}...` // Shove the bio into the notes
+                org: document.getElementById('m-org').value,
+                domain: document.getElementById('m-domain').value,
+                exp: document.getElementById('m-exp').value,
+                rate: document.getElementById('m-rate').value || '0',
+                phone: document.getElementById('m-phone').value,
+                bio: document.getElementById('m-bio').value
             };
 
             // Loading state
@@ -1778,7 +1769,7 @@
             submitBtn.disabled = true;
 
             try {
-                const response = await fetch('/api/book', {
+                const response = await fetch('/api/mentor', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(payload)
