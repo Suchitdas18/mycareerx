@@ -943,7 +943,7 @@
             }
 
             .form-section {
-                padding: 3rem;
+                padding: 3rem 2rem;
             }
 
             .smart-form {
@@ -992,6 +992,15 @@
 
             .testimonial-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .form-section {
+                padding: 2rem 1rem;
+                border-radius: var(--radius-lg);
+            }
+
+            .smart-form {
+                padding: 1.5rem 1rem;
             }
 
             .form-row {
@@ -1330,7 +1339,7 @@
                         <h2>Chart Your Path. <br><span style="color: var(--secondary);">Book a Session.</span></h2>
                         <p>Ready to accelerate your career? Fill out your basic details below. Our team carefully
                             reviews your background to perfectly match you with an elite mentor.</p>
-                        <ul style="list-style: none; margin-top: 2rem;">
+                        <ul style="list-style: none; margin-top: 2rem; padding: 0;">
                             <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
                                     class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
                                 Get a custom roadmap.</li>
@@ -1420,14 +1429,14 @@
             <div class="form-section"
                 style="background: var(--surface); color: var(--text-main); border: 1px solid var(--border);">
                 <!-- Reverse grid visually keeping layout interesting -->
-                <div class="form-grid" style="direction: rtl;">
-                    <div class="form-content" style="direction: ltr;">
+                <div class="form-grid">
+                    <div class="form-content">
                         <h2 style="color: var(--text-main);">Give Back. <br><span style="color: var(--primary);">Become
                                 a Mentor.</span></h2>
                         <p style="color: var(--text-muted);">Are you a top performer at a prestigious institute? Join
                             our elite network, guide the next generation, and shape careers on your own flexible
                             schedule.</p>
-                        <ul style="list-style: none; margin-top: 2rem;">
+                        <ul style="list-style: none; margin-top: 2rem; padding: 0;">
                             <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
                                     class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
                                 Set your own hours and rates.</li>
@@ -1439,7 +1448,7 @@
                                 someone's life.</li>
                         </ul>
                     </div>
-                    <div class="smart-form" style="direction: ltr; border: 1px solid var(--border);">
+                    <div class="smart-form" style="border: 1px solid var(--border);">
                         <form
                             onsubmit="event.preventDefault(); this.innerHTML = '<div style=\'text-align: center; padding: 2rem;\'><i class=\'fas fa-user-astronaut\' style=\'font-size: 3rem; color: var(--primary); margin-bottom: 1rem;\'></i><h3 style=\'color: var(--primary); margin-bottom: 1rem;\'>Application Sent!</h3><p>We will review your credentials and reach out on WhatsApp within 48 hours for onboard screening.</p></div>';">
                             <div class="input-group">
