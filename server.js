@@ -30,7 +30,16 @@ try {
 
     if (process.env.GOOGLE_CREDENTIALS) {
         // We are on Vercel
-        authOptions.credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
+        const creds = typeof process.env.GOOGLE_CREDENTIALS === 'string' 
+            ? JSON.parse(process.env.GOOGLE_CREDENTIALS) 
+            : process.env.GOOGLE_CREDENTIALS;
+            
+        // Fix for Vercel escaping literal newlines in the private key string
+        if (creds.private_key) {
+            creds.private_key = creds.private_key.replace(/\\n/g, '\n');
+        }
+        
+        authOptions.credentials = creds;
     } else {
         // We are testing locally
         authOptions.keyFile = './credentials.json';
@@ -39,7 +48,7 @@ try {
     const auth = new google.auth.GoogleAuth(authOptions);
     sheets = google.sheets({ version: 'v4', auth });
 } catch (error) {
-    console.warn("⚠️ Google Sheets API hasn't been configured yet. Need credentials.json or GOOGLE_CREDENTIALS env var!");
+    console.warn("⚠️ Google Sheets setup error:", error.message);
 }
 
 // Endpoint to handle booking form submissions
@@ -102,7 +111,7 @@ app.post('/api/book', async (req, res) => {
         res.json({ success: true, message: 'Booking saved to Google Sheets successfully' });
     } catch (error) {
         console.error('Error saving booking to Google Sheets:', error);
-        res.status(500).json({ success: false, message: 'Failed to save to database. Check console logs.' });
+        res.status(500).json({ success: false, message: 'Failed to save to database. Error: ' + (error.message || error) });
     }
 });
 
