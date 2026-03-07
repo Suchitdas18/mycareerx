@@ -22,8 +22,10 @@ const GOOGLE_SHEETS_CREDENTIALS = {
 const SPREADSHEET_ID = '1vjozZtj_G2Mj1PXP3I610ekuvvpJaYSe7ue_kymrQwg'; 
 
 // The ID from the URL of your Google Sheet for Mentors
-// Since you haven't made it yet, I will leave it blank. You MUST update this!
 const MENTORS_SPREADSHEET_ID = '1AcjBb7LItvK_UZmHUsCj7bJw4d8Pjlxl1FHS65bsZIE'; 
+
+// The ID from the URL of your Google Sheet for Inquiries ("Know More")
+const INQUIRY_SPREADSHEET_ID = '1vB2J5fC1hI-9nAeNv7kb8EC3TiCMiLkFYDij_msLPd8';
 
 // Setup Google Auth (Check Vercel env variable first, then fallback to local file)
 let sheets = null;
@@ -169,6 +171,41 @@ app.post('/api/mentor', async (req, res) => {
     } catch (error) {
         console.error('Error saving mentor app:', error);
         res.status(500).json({ success: false, message: 'Failed to save to Mentor database.' });
+    }
+});
+
+// Endpoint to handle University Inquiry tracking 
+app.post('/api/inquiry', async (req, res) => {
+    try {
+        const { name, phone, college } = req.body;
+
+        if (!name || !phone) {
+            return res.status(400).json({ success: false, message: 'Name and Phone are required' });
+        }
+
+        const newRow = [
+            new Date().toLocaleString(), // Timestamp
+            name,
+            phone,
+            college || 'Not Specified',
+            'Pending Contact'
+        ];
+
+        if (!sheets) {
+            return res.json({ success: true, message: 'Inquiry saved locally! (Google Sheets setup required)' });
+        }
+
+        await sheets.spreadsheets.values.append({
+            spreadsheetId: INQUIRY_SPREADSHEET_ID,
+            range: 'Sheet1!A:E', 
+            valueInputOption: 'USER_ENTERED',
+            requestBody: { values: [newRow] },
+        });
+
+        res.json({ success: true, message: 'Inquiry recorded securely!' });
+    } catch (error) {
+        console.error('Error saving inquiry:', error);
+        res.status(500).json({ success: false, message: 'Failed to record inquiry.' });
     }
 });
 

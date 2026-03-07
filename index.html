@@ -1192,11 +1192,48 @@
                             & Many More...</div>
                     </div>
 
-                    <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20want%20to%20know%20more%20about%20direct%20admissions%20in%20top%20private%20universities%20(KIIT,%20VIT,%20etc)."
-                        target="_blank" class="btn btn-whatsapp"
-                        style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);">
-                        <i class="fab fa-whatsapp" style="font-size: 1.4rem;"></i> Chat with Admission Expert
-                    </a>
+                    <div style="display: flex; flex-direction: column; gap: 1.5rem; align-items: center;">
+                        <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20want%20to%20know%20more%20about%20direct%20admissions%20in%20top%20private%20universities%20(KIIT,%20VIT,%20etc)."
+                            target="_blank" class="btn btn-whatsapp"
+                            style="font-size: 1.1rem; padding: 1rem 2.5rem; display: inline-flex; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25); width: 100%; max-width: 400px; justify-content: center;">
+                            <i class="fab fa-whatsapp" style="font-size: 1.4rem; margin-right: 0.5rem;"></i> Chat with
+                            Admission Expert
+                        </a>
+
+                        <div
+                            style="width: 100%; max-width: 400px; padding: 2rem; background: var(--bg-body); border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-md); margin-top: 1rem;">
+                            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">Or Request a Free Call</h3>
+                            <form id="inquiryForm" onsubmit="event.preventDefault(); submitInquiry();"
+                                style="text-align: left;">
+                                <div class="input-group" style="margin-bottom: 1rem;">
+                                    <label
+                                        style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Full
+                                        Name *</label>
+                                    <input type="text" id="inq-name" class="input-control" placeholder="e.g. John Doe"
+                                        required
+                                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 1rem;">
+                                    <label
+                                        style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Phone
+                                        Number *</label>
+                                    <input type="tel" id="inq-phone" class="input-control" placeholder="+91 xxxxxxxxxx"
+                                        required
+                                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                                </div>
+                                <div class="input-group" style="margin-bottom: 1.5rem;">
+                                    <label
+                                        style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Target
+                                        College (Optional)</label>
+                                    <input type="text" id="inq-college" class="input-control"
+                                        placeholder="e.g. KIIT or VIT"
+                                        style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                                </div>
+                                <button type="submit" id="submitInquiryBtn" class="btn btn-primary"
+                                    style="width: 100%; padding: 0.75rem;">Get Free Consultation</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1941,6 +1978,53 @@
                 console.error('Error submitting form:', error);
                 alert('Connection error. Please try again.');
                 submitBtn.textContent = 'Apply as Mentor';
+                submitBtn.disabled = false;
+                submitBtn.style.opacity = '1';
+            }
+        }
+
+        // Submit Inquiry form logic
+        async function submitInquiry() {
+            const formWrapper = document.getElementById('inquiryForm').parentElement;
+            const submitBtn = document.getElementById('submitInquiryBtn');
+
+            const payload = {
+                name: document.getElementById('inq-name').value,
+                phone: document.getElementById('inq-phone').value,
+                college: document.getElementById('inq-college').value
+            };
+
+            submitBtn.textContent = 'Sending Details...';
+            submitBtn.style.opacity = '0.7';
+            submitBtn.disabled = true;
+
+            try {
+                const response = await fetch('/api/inquiry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    formWrapper.innerHTML = `
+                        <div style="text-align: center; padding: 2rem 1rem; animation: reveal 0.5s ease;">
+                            <i class="fas fa-check-circle" style="font-size: 3.5rem; color: var(--success); margin-bottom: 1rem;"></i>
+                            <h3 style="color: var(--success); margin-bottom: 0.5rem; font-size: 1.3rem;">Request Received!</h3>
+                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Our counseling expert will call you shortly on ${payload.phone} regarding direct admissions.</p>
+                        </div>
+                    `;
+                } else {
+                    alert('Error: ' + result.message);
+                    submitBtn.textContent = 'Get Free Consultation';
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                }
+            } catch (error) {
+                console.error('Error submitting inquiry:', error);
+                alert('Connection error. Please try again.');
+                submitBtn.textContent = 'Get Free Consultation';
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = '1';
             }
