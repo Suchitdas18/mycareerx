@@ -93,8 +93,8 @@ app.post('/api/book', async (req, res) => {
             new Date().toLocaleString(), // Timestamp
             name,
             schoolName,
-            primaryNumber,
-            secondaryNumber || 'N/A',
+            primaryNumber ? `'${primaryNumber}` : 'N/A',
+            secondaryNumber ? `'${secondaryNumber}` : 'N/A',
             email || 'N/A',
             tenthPercent,
             twelfthPercent || 'N/A',
@@ -151,7 +151,7 @@ app.post('/api/mentor', async (req, res) => {
             domain,
             exp,
             rate,
-            phone,
+            `'${phone}`,
             bio,
             'Pending Review' // Status Column
         ];
@@ -186,7 +186,7 @@ app.post('/api/inquiry', async (req, res) => {
         const newRow = [
             new Date().toLocaleString(), // Timestamp
             name,
-            phone,
+            `'${phone}`,
             college || 'Not Specified',
             'Pending Contact'
         ];
