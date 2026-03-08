@@ -22,6 +22,17 @@ function processTop(topContent, title, desc) {
     newTop = newTop.replace(/href="#how-it-works"/g, 'href="/index.html#how-it-works"');
     newTop = newTop.replace(/href="#testimonials"/g, 'href="/index.html#testimonials"');
     newTop = newTop.replace(/href="#book-session"/g, 'href="/index.html#book-session"');
+    
+    // Inject back cross on SEO pages
+    newTop = newTop.replace(/<a href="\/" class="logo"/g,
+        '<div style="display: flex; align-items: center; gap: 1rem; margin-right: auto;">\n' +
+        '                <a href="/" title="Back to Main Page" style="color: var(--text-main); font-size: 1.5rem; text-decoration: none; padding-right: 15px; border-right: 1px solid var(--border);">\n' +
+        '                    <i class="fas fa-times"></i>\n' +
+        '                </a>\n' +
+        '                <a href="/" class="logo"');
+    newTop = newTop.replace(/alt="MyCareerX Logo" style="height: 40px; width: auto; display: block;">\s*<\/a>/g,
+        'alt="MyCareerX Logo" style="height: 40px; width: auto; display: block;">\n            </a>\n            </div>');
+
     return newTop;
 }
 
