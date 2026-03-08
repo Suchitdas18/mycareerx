@@ -2,3 +2,5 @@ node_modules/
 credentials.json
 .local
 *.xlsx
+.env
+.env.*

@@ -1,0 +1,7 @@
+.env
+.env.*
+credentials.json
+*.md
+README.md
+.gitignore
+.git/
