@@ -1107,7 +1107,38 @@
                     A simple 15-minute conversation with a mentor who has successfully navigated their post-12th journey can spark immense clarity. Request a free post-12th mentorship callback today, and we'll connect you directly with experts!
                 </p>
                 
-                ${dualFormHTML('After 12th Guidance', 'Request Post-12th Guidance')}
+                
+    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; width: 100%; max-width: 900px; margin-top: 3rem; margin-left: auto; margin-right: auto;" class="reveal">
+        <!-- WhatsApp Action Option -->
+        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(37, 211, 102, 0.04); border: 1px solid rgba(37, 211, 102, 0.2); border-radius: var(--radius-lg); padding: 2.5rem 1.5rem;">
+            <i class="fab fa-whatsapp" style="font-size: 3.5rem; color: #25D366; margin-bottom: 1rem;"></i>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Instant WhatsApp Chat</h3>
+            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; text-align: center;"> Get immediate answers about fees, seat availability, and application procedures right on WhatsApp.</p>
+            <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20want%20to%20know%20more%20about%20${encodeURIComponent(context)}." target="_blank" class="btn btn-whatsapp" style="font-size: 1.05rem; padding: 1rem 2rem; width: 100%; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);">Connect on WhatsApp</a>
+        </div>
+
+        <!-- Form Action Option -->
+        <div style="flex: 1; min-width: 300px; max-width: 450px; padding: 2rem; background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; text-align: left;">${formTitle}</h3>
+            <form id="seoInquiryForm${context.replace(/\s/g, '')}" onsubmit="event.preventDefault(); submitSeoForm(this, '${context}');" style="text-align: left;">
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Full Name *</label>
+                    <input type="text" name="name" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                </div>
+                <div class="input-group" style="margin-bottom: 1rem;">
+                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Phone Number *</label>
+                    <input type="tel" name="phone" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                </div>
+                <div class="input-group" style="margin-bottom: 1.5rem;">
+                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Target College (Optional)</label>
+                    <input type="text" name="college" class="input-control" placeholder="Your Dream College" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Get Free Consultation</button>
+                <div class="form-msg msg-ui" style="margin-top: 1rem; text-align: center;"></div>
+            </form>
+        </div>
+    </div>
+
             </div>
         </div>
     </section>

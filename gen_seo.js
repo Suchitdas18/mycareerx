@@ -120,7 +120,7 @@ const pages = [
                     Take control of your future today. Reach out to our expert counselors instantly via WhatsApp, or leave your details below and we will schedule your personalized evaluation session absolutely free.
                 </p>
                 
-                \${dualFormHTML('Career Counselling Session', 'Request Free Counselling Callback')}
+                ${dualFormHTML('Career Counselling Session', 'Request Free Counselling Callback')}
             </div>
         </div>
     </section>
@@ -178,7 +178,7 @@ const pages = [
                     Don't leave your future to chance. Speak immediately with our admission experts to explore confirmed placement opportunities at KIIT, VIT, SRM, and more. Connect directly via WhatsApp or request a dedicated callback.
                 </p>
                 
-                \${dualFormHTML('Direct Admission Enquiry', 'Request a Free Admission Callback')}
+                ${dualFormHTML('Direct Admission Enquiry', 'Request a Free Admission Callback')}
             </div>
         </div>
     </section>
@@ -237,7 +237,7 @@ const pages = [
                     A simple 15-minute conversation with a mentor who has successfully navigated their post-12th journey can spark immense clarity. Request a free post-12th mentorship callback today, and we'll connect you directly with experts!
                 </p>
                 
-                \${dualFormHTML('After 12th Guidance', 'Request Post-12th Guidance')}
+                ${dualFormHTML('After 12th Guidance', 'Request Post-12th Guidance')}
             </div>
         </div>
     </section>
