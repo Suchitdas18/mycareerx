@@ -119,8 +119,99 @@ const pages = [
                 <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin: 0 auto;">
                     Take control of your future today. Reach out to our expert counselors instantly via WhatsApp, or leave your details below and we will schedule your personalized evaluation session absolutely free.
                 </p>
-                
-                ${dualFormHTML('Career Counselling Session', 'Request Free Counselling Callback')}
+            </div>
+        </div>
+    </section>
+
+    <!-- Book a Session (Form Section) -->
+    <section id="book-session">
+        <div class="container reveal">
+            <div class="form-section">
+                <div class="form-grid">
+                    <div class="form-content">
+                        <h2>Chart Your Path. <br><span style="color: var(--secondary);">Book a Session.</span></h2>
+                        <p>Ready to accelerate your career? Fill out your basic details below. Our team carefully
+                            reviews your background to perfectly match you with an elite mentor.</p>
+                        <ul style="list-style: none; margin-top: 2rem; padding: 0;">
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Get a custom roadmap.</li>
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Flexible scheduling options.</li>
+                            <li style="display: flex; align-items: center; gap: 1rem;"><i class="fas fa-check-circle"
+                                    style="color: var(--success); font-size: 1.25rem;"></i> Trusted by 10,000+ students.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="smart-form">
+                        <form id="bookingForm" onsubmit="event.preventDefault(); submitBooking();">
+                            <div class="input-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="b-name" class="input-control" placeholder="Samay Raina" required>
+                            </div>
+                            <div class="input-group">
+                                <label>School Name *</label>
+                                <input type="text" id="b-school" class="input-control"
+                                    placeholder="e.g. st xaviers school" required>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Primary Number *</label>
+                                    <input type="tel" id="b-phone1" class="input-control" placeholder="+91 00000 00000"
+                                        required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Secondary Number</label>
+                                    <input type="tel" id="b-phone2" class="input-control" placeholder="(Optional)">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Email Address</label>
+                                <input type="email" id="b-email" class="input-control"
+                                    placeholder="samayraina@example.com (Optional)">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>10th Percentile *</label>
+                                    <input type="text" id="b-10th" class="input-control" placeholder="e.g. 95%"
+                                        required>
+                                </div>
+                                <div class="input-group">
+                                    <label>12th Percentile</label>
+                                    <input type="text" id="b-12th" class="input-control"
+                                        placeholder="(Expected or Actual)">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Session Type *</label>
+                                    <select id="b-type" class="input-control" required>
+                                        <option value="" disabled selected>Select...</option>
+                                        <option value="Free">Free Intro Session</option>
+                                        <option value="Premium">Premium Mentorship</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Select Date *</label>
+                                    <input type="date" id="b-date" class="input-control" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Specific Mentor (Optional)</label>
+                                <input type="text" id="b-mentor" class="input-control" placeholder="e.g. Rahul Sharma">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn btn-primary"
+                                style="width: 100%; font-size: 1.125rem;">Schedule Appointment</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

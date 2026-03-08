@@ -1110,39 +1110,99 @@
                 <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin: 0 auto;">
                     Take control of your future today. Reach out to our expert counselors instantly via WhatsApp, or leave your details below and we will schedule your personalized evaluation session absolutely free.
                 </p>
-                
-                
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; width: 100%; max-width: 900px; margin-top: 3rem; margin-left: auto; margin-right: auto;" class="reveal">
-        <!-- WhatsApp Action Option -->
-        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(37, 211, 102, 0.04); border: 1px solid rgba(37, 211, 102, 0.2); border-radius: var(--radius-lg); padding: 2.5rem 1.5rem;">
-            <i class="fab fa-whatsapp" style="font-size: 3.5rem; color: #25D366; margin-bottom: 1rem;"></i>
-            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Instant WhatsApp Chat</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; text-align: center;"> Get immediate answers about fees, seat availability, and application procedures right on WhatsApp.</p>
-            <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20want%20to%20know%20more%20about%20Career%20Counselling%20Session." target="_blank" class="btn btn-whatsapp" style="font-size: 1.05rem; padding: 1rem 2rem; width: 100%; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);">Connect on WhatsApp</a>
+            </div>
         </div>
+    </section>
 
-        <!-- Form Action Option -->
-        <div style="flex: 1; min-width: 300px; max-width: 450px; padding: 2rem; background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; text-align: left;">Request Free Counselling Callback</h3>
-            <form id="seoInquiryFormCareerCounsellingSession" onsubmit="event.preventDefault(); submitSeoForm(this, 'Career Counselling Session');" style="text-align: left;">
-                <div class="input-group" style="margin-bottom: 1rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Full Name *</label>
-                    <input type="text" name="name" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
-                </div>
-                <div class="input-group" style="margin-bottom: 1rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Phone Number *</label>
-                    <input type="tel" name="phone" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
-                </div>
-                <div class="input-group" style="margin-bottom: 1.5rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Target College (Optional)</label>
-                    <input type="text" name="college" class="input-control" placeholder="Your Dream College" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Get Free Consultation</button>
-                <div class="form-msg msg-ui" style="margin-top: 1rem; text-align: center;"></div>
-            </form>
-        </div>
-    </div>
+    <!-- Book a Session (Form Section) -->
+    <section id="book-session">
+        <div class="container reveal">
+            <div class="form-section">
+                <div class="form-grid">
+                    <div class="form-content">
+                        <h2>Chart Your Path. <br><span style="color: var(--secondary);">Book a Session.</span></h2>
+                        <p>Ready to accelerate your career? Fill out your basic details below. Our team carefully
+                            reviews your background to perfectly match you with an elite mentor.</p>
+                        <ul style="list-style: none; margin-top: 2rem; padding: 0;">
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Get a custom roadmap.</li>
+                            <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem;"><i
+                                    class="fas fa-check-circle" style="color: var(--success); font-size: 1.25rem;"></i>
+                                Flexible scheduling options.</li>
+                            <li style="display: flex; align-items: center; gap: 1rem;"><i class="fas fa-check-circle"
+                                    style="color: var(--success); font-size: 1.25rem;"></i> Trusted by 10,000+ students.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="smart-form">
+                        <form id="bookingForm" onsubmit="event.preventDefault(); submitBooking();">
+                            <div class="input-group">
+                                <label>Full Name *</label>
+                                <input type="text" id="b-name" class="input-control" placeholder="Samay Raina" required>
+                            </div>
+                            <div class="input-group">
+                                <label>School Name *</label>
+                                <input type="text" id="b-school" class="input-control"
+                                    placeholder="e.g. st xaviers school" required>
+                            </div>
 
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Primary Number *</label>
+                                    <input type="tel" id="b-phone1" class="input-control" placeholder="+91 00000 00000"
+                                        required>
+                                </div>
+                                <div class="input-group">
+                                    <label>Secondary Number</label>
+                                    <input type="tel" id="b-phone2" class="input-control" placeholder="(Optional)">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Email Address</label>
+                                <input type="email" id="b-email" class="input-control"
+                                    placeholder="samayraina@example.com (Optional)">
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>10th Percentile *</label>
+                                    <input type="text" id="b-10th" class="input-control" placeholder="e.g. 95%"
+                                        required>
+                                </div>
+                                <div class="input-group">
+                                    <label>12th Percentile</label>
+                                    <input type="text" id="b-12th" class="input-control"
+                                        placeholder="(Expected or Actual)">
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <label>Session Type *</label>
+                                    <select id="b-type" class="input-control" required>
+                                        <option value="" disabled selected>Select...</option>
+                                        <option value="Free">Free Intro Session</option>
+                                        <option value="Premium">Premium Mentorship</option>
+                                    </select>
+                                </div>
+                                <div class="input-group">
+                                    <label>Select Date *</label>
+                                    <input type="date" id="b-date" class="input-control" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <label>Specific Mentor (Optional)</label>
+                                <input type="text" id="b-mentor" class="input-control" placeholder="e.g. Rahul Sharma">
+                            </div>
+
+                            <button type="submit" id="submitBtn" class="btn btn-primary"
+                                style="width: 100%; font-size: 1.125rem;">Schedule Appointment</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
