@@ -9,10 +9,10 @@ let baseBottom = indexStr.substring(footerIdx);
 
 // Modify navigation links
 function processTop(topContent, title, desc) {
-    let newTop = topContent.replace('<title>MyCareerX - Where Students Meet Their Future</title>', `<title>\${title}</title>
-    <meta name="description" content="\${desc}">
-    <meta property="og:title" content="\${title}">
-    <meta property="og:description" content="\${desc}">
+    let newTop = topContent.replace('<title>MyCareerX - Where Students Meet Their Future</title>', `<title>${title}</title>
+    <meta name="description" content="${desc}">
+    <meta property="og:title" content="${title}">
+    <meta property="og:description" content="${desc}">
     <meta property="og:type" content="website">`);
     
     // Fix hash links in the top nav
