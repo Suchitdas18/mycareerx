@@ -20,6 +20,18 @@
         {
             "src": "robots.txt",
             "use": "@vercel/static"
+        },
+        {
+            "src": "career-counselling.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "direct-admission.html",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "career-guidance-after-12th.html",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
@@ -42,6 +54,30 @@
         {
             "src": "/robots.txt",
             "dest": "/robots.txt"
+        },
+        {
+            "src": "/career-counselling",
+            "dest": "/career-counselling.html"
+        },
+        {
+            "src": "/career-counselling.html",
+            "dest": "/career-counselling.html"
+        },
+        {
+            "src": "/direct-admission",
+            "dest": "/direct-admission.html"
+        },
+        {
+            "src": "/direct-admission.html",
+            "dest": "/direct-admission.html"
+        },
+        {
+            "src": "/career-guidance-after-12th",
+            "dest": "/career-guidance-after-12th.html"
+        },
+        {
+            "src": "/career-guidance-after-12th.html",
+            "dest": "/career-guidance-after-12th.html"
         },
         {
             "src": "/(.*)",
