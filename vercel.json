@@ -32,6 +32,10 @@
         {
             "src": "career-guidance-after-12th.html",
             "use": "@vercel/static"
+        },
+        {
+            "src": "logomycareerx.png",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
@@ -78,6 +82,9 @@
         {
             "src": "/career-guidance-after-12th.html",
             "dest": "/career-guidance-after-12th.html"
+        },
+        {
+            "handle": "filesystem"
         },
         {
             "src": "/(.*)",
