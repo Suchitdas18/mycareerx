@@ -88,7 +88,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/index.html"
+            "dest": "/direct-admission.html"
         }
     ]
 }
