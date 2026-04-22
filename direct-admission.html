@@ -1,1216 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Direct Admission in Top Colleges | College Admission Guidance | MyCareerX</title>
-    <meta name="description" content="Secure direct admission in top private engineering and medical colleges. Get transparent college admission guidance with MyCareerX.">
-    <meta property="og:title" content="Direct Admission in Top Colleges | College Admission Guidance | MyCareerX">
-    <meta property="og:description" content="Secure direct admission in top private engineering and medical colleges. Get transparent college admission guidance with MyCareerX.">
-    <meta property="og:type" content="website">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <title>Direct Admission 2026 | Top Private Colleges in India | MyCareerX</title>
+    <meta name="description" content="Get direct admission in top private engineering & medical colleges. KIIT, VIT, SRM, LPU, BITS, MIT Pune & more. Book your seat now!">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary: #4F46E5;
-            /* Indigo 600 */
             --primary-dark: #3730A3;
             --primary-light: #EEF2FF;
             --secondary: #0EA5E9;
-            /* Sky 500 */
             --accent: #F43F5E;
-            /* Rose 500 */
-            --bg-body: #FAFAFA;
+            --bg-body: #F8FAFC;
             --surface: #FFFFFF;
-            --surface-glass: rgba(255, 255, 255, 0.7);
+            --surface-glass: rgba(255,255,255,0.75);
             --text-main: #0F172A;
-            /* Slate 900 */
             --text-muted: #64748B;
-            /* Slate 500 */
             --border: #E2E8F0;
             --success: #10B981;
             --warning: #F59E0B;
-            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
-            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.05);
-            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.05), 0 8px 10px -6px rgb(0 0 0 / 0.05);
-            --shadow-glow: 0 0 20px rgba(79, 70, 229, 0.4);
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0/.05);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0/.07),0 2px 4px -2px rgb(0 0 0/.05);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0/.08),0 4px 6px -4px rgb(0 0 0/.05);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0/.08),0 8px 10px -6px rgb(0 0 0/.04);
             --radius-md: 12px;
             --radius-lg: 20px;
-            --radius-xl: 32px;
-            --gradient-primary: linear-gradient(135deg, #4F46E5 0%, #0EA5E9 100%);
-            --gradient-text: linear-gradient(to right, #4F46E5, #ec4899);
+            --radius-xl: 28px;
+            --gradient-primary: linear-gradient(135deg,#4F46E5 0%,#0EA5E9 100%);
+            --gradient-text: linear-gradient(to right,#4F46E5,#ec4899);
         }
+        *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif;-webkit-font-smoothing:antialiased}
+        html{scroll-behavior:smooth}
+        body{background:var(--bg-body);color:var(--text-main);line-height:1.6;overflow-x:hidden}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        /* Abstract ambient background elements */
-        .ambient-blob {
-            position: absolute;
-            filter: blur(100px);
-            opacity: 0.4;
-            z-index: -1;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .blob-1 {
-            top: -10%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
-            background: #818CF8;
-            /* Indigo 400 */
-            animation: moveBlob 20s infinite alternate;
-        }
-
-        .blob-2 {
-            top: 20%;
-            right: -10%;
-            width: 40vw;
-            height: 40vw;
-            background: #38BDF8;
-            /* Sky 400 */
-            animation: moveBlob2 25s infinite alternate-reverse;
-        }
-
-        @keyframes moveBlob {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(10vw, 10vh) scale(1.1);
-            }
-        }
-
-        @keyframes moveBlob2 {
-            0% {
-                transform: translate(0, 0) scale(1);
-            }
-
-            100% {
-                transform: translate(-10vw, 5vh) scale(1.15);
-            }
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            letter-spacing: -0.02em;
-        }
-
-        h2 {
-            font-size: 2.75rem;
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.125rem;
-            color: var(--text-muted);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            padding: 8rem 0;
-            position: relative;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 1rem;
-            text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: 2px solid transparent;
-        }
-
-        .btn-primary {
-            background: var(--text-main);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            background: var(--primary);
-        }
-
-        .btn-gradient {
-            background: var(--gradient-primary);
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
-            border: none;
-        }
-
-        .btn-gradient:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-glow);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border-color: var(--border);
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--text-main);
-            background: var(--surface);
-        }
-
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4);
-        }
-
-        .btn-whatsapp:hover {
-            background: #128C7E;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
-        }
+        /* Ambient Blobs */
+        .ambient-blob{position:fixed;filter:blur(120px);opacity:.3;z-index:-1;border-radius:50%;pointer-events:none}
+        .blob-1{top:-15%;left:-10%;width:50vw;height:50vw;background:#818CF8;animation:moveBlob 20s infinite alternate}
+        .blob-2{top:30%;right:-15%;width:40vw;height:40vw;background:#38BDF8;animation:moveBlob2 25s infinite alternate-reverse}
+        @keyframes moveBlob{0%{transform:translate(0,0) scale(1)}100%{transform:translate(10vw,10vh) scale(1.1)}}
+        @keyframes moveBlob2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-10vw,5vh) scale(1.15)}}
 
         /* Nav */
-        header {
-            position: fixed;
-            top: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 3rem);
-            max-width: 1280px;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
+        header{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:calc(100% - 3rem);max-width:1280px;z-index:1000;transition:all .3s ease}
+        nav{background:var(--surface-glass);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.5);border-radius:100px;padding:.75rem 1.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--shadow-sm)}
+        .logo{font-size:1.5rem;font-weight:800;color:var(--text-main);text-decoration:none;display:flex;align-items:center;gap:.5rem}
+        .nav-actions{display:flex;gap:.75rem;align-items:center}
+        .mobile-menu-btn{display:none;background:none;border:none;font-size:1.5rem;color:var(--text-main);cursor:pointer}
 
-        nav {
-            background: var(--surface-glass);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 100px;
-            padding: 0.75rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow-sm);
-        }
+        /* Buttons */
+        .btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.75rem;border-radius:100px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .3s cubic-bezier(.4,0,.2,1);cursor:pointer;border:2px solid transparent}
+        .btn-primary{background:var(--text-main);color:#fff;box-shadow:var(--shadow-md)}
+        .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);background:var(--primary)}
+        .btn-gradient{background:var(--gradient-primary);color:#fff;box-shadow:0 10px 25px -5px rgba(79,70,229,.4);border:none}
+        .btn-gradient:hover{transform:translateY(-2px);box-shadow:0 0 20px rgba(79,70,229,.4)}
+        .btn-outline{background:transparent;color:var(--text-main);border-color:var(--border)}
+        .btn-outline:hover{border-color:var(--text-main);background:var(--surface)}
+        .btn-accent{background:var(--accent);color:#fff;border:none;box-shadow:0 8px 20px -5px rgba(244,63,94,.35)}
+        .btn-accent:hover{transform:translateY(-2px);box-shadow:0 12px 25px -5px rgba(244,63,94,.45)}
+        .btn-sm{padding:.6rem 1.25rem;font-size:.85rem}
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-main);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+        .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1.5rem}
 
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--gradient-primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-            position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-main);
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
+        /* Contact Strip */
+        .contact-strip{background:var(--gradient-primary);color:#fff;padding:.75rem 0;text-align:center;font-size:.95rem;font-weight:600;letter-spacing:.02em;position:relative;z-index:1001}
+        .contact-strip a{color:#fff;text-decoration:none;font-weight:800;font-size:1.1rem;margin:0 .5rem;border-bottom:2px solid rgba(255,255,255,.4);padding-bottom:1px;transition:border-color .2s}
+        .contact-strip a:hover{border-color:#fff}
+        .contact-strip i{margin-right:.35rem}
 
         /* Hero */
-        #hero {
-            padding-top: 12rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-        }
-
-        .tagline-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.5rem 1rem;
-            background: rgba(79, 70, 229, 0.1);
-            color: var(--primary);
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(79, 70, 229, 0.2);
-        }
-
-        .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            letter-spacing: -0.03em;
-        }
-
-        .hero-content h1 span {
-            background: var(--gradient-text);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            display: inline-block;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            max-width: 700px;
-            margin: 0 auto 3rem auto;
-            line-height: 1.7;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
-
-        .hero-dashboard-preview {
-            position: relative;
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: var(--radius-xl);
-            background: var(--surface-glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-            padding: 1rem;
-            transform: perspective(1000px) rotateX(2deg);
-            transition: transform 0.5s ease;
-        }
-
-        .hero-dashboard-preview:hover {
-            transform: perspective(1000px) rotateX(0deg);
-        }
-
-        .hero-dashboard-preview img {
-            width: 100%;
-            border-radius: calc(var(--radius-xl) - 0.5rem);
-            display: block;
-        }
-
-        /* Trusted By Marquee */
-        .trusted-section {
-            padding: 3rem 0;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .trusted-section p {
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-        }
-
-        .marquee {
-            width: 100%;
-            display: flex;
-            overflow: hidden;
-            user-select: none;
-            mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-            -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        }
-
-        .marquee-content {
-            display: flex;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: space-around;
-            min-width: 100%;
-            gap: 4rem;
-            animation: scroll 30s linear infinite;
-        }
-
-        .marquee-item {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: #CBD5E1;
-            /* Slate 300 */
-            transition: color 0.3s;
-        }
-
-        .marquee-item:hover {
-            color: var(--text-muted);
-        }
-
-        @keyframes scroll {
-            from {
-                transform: translateX(0);
-            }
-
-            to {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Grid */
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        /* Cards */
-        .feature-card {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            padding: 2.5rem;
-            border: 1px solid var(--border);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            z-index: 1;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: var(--radius-lg);
-            background: var(--gradient-primary);
-            opacity: 0;
-            z-index: -1;
-            transition: opacity 0.4s ease;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            border-color: transparent;
-            box-shadow: var(--shadow-xl);
-        }
-
-        .feature-card:hover::before {
-            opacity: 0.05;
-        }
-
-        .feature-icon {
-            width: 56px;
-            height: 56px;
-            background: var(--primary-light);
-            color: var(--primary);
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover .feature-icon {
-            background: var(--primary);
-            color: white;
-            transform: scale(1.1);
-        }
-
-        .feature-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .feature-card p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Mentor Cards */
-        .mentor-card {
-            background: var(--surface);
-            border-radius: var(--radius-lg);
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .mentor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-            border-color: rgba(79, 70, 229, 0.2);
-        }
-
-        .mentor-badge {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 100px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .badge-free {
-            background: #ECFDF5;
-            color: #059669;
-        }
-
-        .badge-premium {
-            background: #FEF2F2;
-            color: #DC2626;
-        }
-
-        .mentor-avatar {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            margin-bottom: 1.25rem;
-            object-fit: cover;
-            border: 3px solid white;
-            box-shadow: var(--shadow-md);
-            background: var(--primary-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary);
-        }
-
-        .mentor-name {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
-        }
-
-        .mentor-role {
-            font-size: 0.875rem;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .mentor-tags {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .mentor-tag {
-            background: var(--bg-body);
-            color: var(--text-muted);
-            font-size: 0.75rem;
-            padding: 0.25rem 0.75rem;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        .mentor-price {
-            font-size: 1.25rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 1.5rem;
-        }
-
-        /* How it works pipeline */
-        .pipeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            margin-top: 4rem;
-        }
-
-        .pipeline::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 50PX;
-            right: 50px;
-            height: 2px;
-            background: var(--border);
-            z-index: 0;
-
-            @media(max-width: 768px) {
-                display: none;
-            }
-        }
-
-        .step {
-            flex: 1;
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            padding: 0 1rem;
-
-            @media(max-width: 768px) {
-                margin-bottom: 3rem;
-            }
-        }
-
-        .step-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--surface);
-            border: 2px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: var(--primary);
-            margin: 0 auto 1.5rem auto;
-            box-shadow: 0 0 0 10px var(--bg-body);
-            transition: all 0.3s ease;
-        }
-
-        .step:hover .step-icon {
-            background: var(--primary);
-            color: white;
-            box-shadow: 0 0 0 10px rgba(79, 70, 229, 0.1);
-        }
-
-        .step h3 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .step p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* Interactive Testimonials */
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .testimonial-card {
-            background: var(--surface);
-            padding: 2.5rem;
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .stars {
-            color: var(--warning);
-            margin-bottom: 1.5rem;
-            font-size: 0.875rem;
-        }
-
-        .testimonial-text {
-            font-size: 1.125rem;
-            font-weight: 500;
-            line-height: 1.6;
-            margin-bottom: 2rem;
-            color: var(--text-main);
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .user-avatar {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-        }
-
-        .user-details h4 {
-            font-size: 1rem;
-            margin-bottom: 0.1rem;
-        }
-
-        .user-details p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        /* Form styling */
-        .form-section {
-            background: var(--text-main);
-            color: white;
-            border-radius: var(--radius-xl);
-            padding: 5rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .form-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 50vw;
-            height: 100%;
-            background: radial-gradient(circle at top right, rgba(79, 70, 229, 0.3), transparent 70%);
-            pointer-events: none;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .form-content h2 {
-            text-align: left;
-            margin-bottom: 1rem;
-            color: white;
-        }
-
-        .form-content p {
-            color: #94A3B8;
-            font-size: 1.125rem;
-            margin-bottom: 2rem;
-        }
-
-        .smart-form {
-            background: var(--surface);
-            padding: 3rem;
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-2xl);
-            color: var(--text-main);
-        }
-
-        .input-group {
-            margin-bottom: 1.5rem;
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .input-control {
-            width: 100%;
-            padding: 0.875rem 1rem;
-            background: var(--bg-body);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: all 0.2s;
-            color: var(--text-main);
-        }
-
-        .input-control:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
-            background: var(--surface);
-        }
-
-        textarea.input-control {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-        }
+        .hero{padding:10rem 0 5rem;text-align:center;position:relative}
+        .hero h1{font-size:3.5rem;font-weight:800;line-height:1.1;margin-bottom:1.25rem;letter-spacing:-.03em}
+        .hero h1 span{background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;display:inline-block}
+        .hero p{font-size:1.2rem;color:var(--text-muted);max-width:700px;margin:0 auto 2.5rem;line-height:1.7}
+        .tagline-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem 1rem;background:rgba(16,185,129,.1);color:#10B981;border-radius:100px;font-weight:600;font-size:.85rem;margin-bottom:1.5rem;border:1px solid rgba(16,185,129,.25)}
+
+        /* Stats Bar */
+        .stats-bar{display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;margin-top:3rem;padding:2rem;background:var(--surface);border-radius:var(--radius-lg);box-shadow:var(--shadow-md);border:1px solid var(--border)}
+        .stat-item{text-align:center}
+        .stat-item .num{font-size:2rem;font-weight:800;background:var(--gradient-text);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+        .stat-item .label{font-size:.85rem;color:var(--text-muted);font-weight:500;margin-top:.25rem}
+
+        /* College Cards */
+        .colleges-section{padding:5rem 0}
+        .colleges-section h2{font-size:2.5rem;text-align:center;margin-bottom:.75rem;font-weight:800}
+        .section-sub{text-align:center;color:var(--text-muted);font-size:1.05rem;margin-bottom:3rem;max-width:600px;margin-left:auto;margin-right:auto}
+        .college-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:1.75rem}
+        .college-card{background:var(--surface);border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative}
+        .college-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-xl);border-color:rgba(79,70,229,.15)}
+        .college-header{padding:1.75rem 1.75rem 1rem;display:flex;align-items:flex-start;gap:1rem}
+        .college-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;background:var(--primary-light);color:var(--primary);transition:all .3s;overflow:hidden;border:1px solid var(--border)}
+        .college-icon img{width:100%;height:100%;object-fit:contain;background:#fff;padding:4px}
+        .college-card:hover .college-icon{transform:scale(1.08);border-color:var(--primary)}
+        .college-info h3{font-size:1.2rem;font-weight:700;margin-bottom:.25rem}
+        .college-info .location{font-size:.85rem;color:var(--text-muted);display:flex;align-items:center;gap:.35rem}
+        .college-body{padding:0 1.75rem 1rem}
+        .college-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+        .college-tag{background:var(--bg-body);color:var(--text-muted);font-size:.75rem;padding:.3rem .7rem;border-radius:6px;font-weight:500;border:1px solid var(--border)}
+        .college-details{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.25rem}
+        .detail-item{background:var(--bg-body);padding:.75rem;border-radius:10px;border:1px solid var(--border)}
+        .detail-item .detail-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:600;margin-bottom:.2rem}
+        .detail-item .detail-value{font-size:.95rem;font-weight:700;color:var(--text-main)}
+        .college-footer{padding:0 1.75rem 1.75rem;display:flex;gap:.75rem}
+        .college-footer .btn{flex:1;font-size:.85rem;padding:.7rem 1rem}
+
+        /* Form Modal */
+        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);z-index:2000;align-items:center;justify-content:center;padding:1rem}
+        .modal-overlay.active{display:flex}
+        .modal-box{background:var(--surface);border-radius:var(--radius-xl);padding:2.5rem;max-width:520px;width:100%;position:relative;box-shadow:0 25px 60px -12px rgba(0,0,0,.25);animation:modalIn .35s ease;max-height:90vh;overflow-y:auto}
+        @keyframes modalIn{from{opacity:0;transform:translateY(30px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+        .modal-close{position:absolute;top:1.25rem;right:1.25rem;background:var(--bg-body);border:1px solid var(--border);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:1rem;color:var(--text-muted);transition:all .2s}
+        .modal-close:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+        .modal-box h3{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+        .modal-box .modal-sub{color:var(--text-muted);font-size:.9rem;margin-bottom:1.75rem}
+        .form-group{margin-bottom:1.25rem}
+        .form-group label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.4rem;color:var(--text-main);text-transform:uppercase;letter-spacing:.04em}
+        .form-group input,.form-group select{width:100%;padding:.8rem 1rem;background:var(--bg-body);border:1px solid var(--border);border-radius:10px;font-size:.95rem;transition:all .2s;color:var(--text-main);font-family:inherit}
+        .form-group input:focus,.form-group select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 4px rgba(79,70,229,.1);background:#fff}
+        .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+        .form-msg{text-align:center;margin-top:1rem;font-size:.9rem}
+
+        /* WhatsApp Float */
+        .whatsapp-float{position:fixed;bottom:2rem;right:2rem;z-index:1500;display:flex;align-items:center;gap:.75rem;animation:floatPulse 2s infinite}
+        .whatsapp-float a{display:flex;align-items:center;justify-content:center;width:64px;height:64px;background:#25D366;border-radius:50%;color:#fff;font-size:2rem;box-shadow:0 8px 25px rgba(37,211,102,.45);transition:all .3s;text-decoration:none}
+        .whatsapp-float a:hover{transform:scale(1.1);box-shadow:0 12px 35px rgba(37,211,102,.55)}
+        .wa-tooltip{background:var(--surface);padding:.6rem 1rem;border-radius:10px;box-shadow:var(--shadow-lg);font-size:.8rem;font-weight:600;color:var(--text-main);white-space:nowrap;border:1px solid var(--border);opacity:0;transform:translateX(10px);transition:all .3s}
+        .whatsapp-float:hover .wa-tooltip{opacity:1;transform:translateX(0)}
+        @keyframes floatPulse{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
 
         /* Footer */
-        footer {
-            background: white;
-            padding: 6rem 0 2rem;
-            border-top: 1px solid var(--border);
+        footer{background:#fff;padding:4rem 0 2rem;border-top:1px solid var(--border);margin-top:4rem}
+        .footer-bottom{padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;color:var(--text-muted);font-size:.85rem;flex-wrap:wrap;gap:1rem}
+
+        /* Reveal Anim */
+        .reveal{opacity:0;transform:translateY(20px);transition:all .7s cubic-bezier(.5,0,0,1)}
+        .reveal.active{opacity:1;transform:translateY(0)}
+
+        /* Scrolled header */
+        header.scrolled{top:0;width:100%;max-width:100%}
+        header.scrolled nav{border-radius:0;border-bottom:1px solid var(--border)}
+
+        /* Responsive */
+        @media(max-width:1024px){
+            .hero h1{font-size:2.75rem}
+            .college-grid{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+            .stats-bar{gap:2rem}
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 4rem;
-            margin-bottom: 4rem;
-        }
-
-        .footer-logo {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-main);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-desc {
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            max-width: 300px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: var(--bg-body);
-            color: var(--text-muted);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .footer-links h4 {
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            transition: color 0.2s;
-            font-size: 0.95rem;
-        }
-
-        .footer-links a:hover {
-            color: var(--primary);
-        }
-
-        .footer-bottom {
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-muted);
-            font-size: 0.875rem;
-        }
-
-        /* Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.7s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Adjustments */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        @media (max-width: 1024px) {
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .form-section {
-                padding: 3rem 2rem;
-            }
-
-            .smart-form {
-                padding: 2rem;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            header {
-                top: 0;
-                width: 100%;
-                max-width: 100%;
-                border-radius: 0;
-            }
-
-            nav {
-                border-radius: 0;
-                border: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .nav-links,
-            .nav-actions .btn:not(.menu-btn) {
-                display: none;
-            }
-
-            .mobile-menu-btn {
-                display: block;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            #hero {
-                padding-top: 8rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .hero-buttons .btn {
-                width: 100%;
-            }
-
-            .pipeline {
-                flex-direction: column;
-            }
-
-            .testimonial-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .form-section {
-                padding: 2rem 1rem;
-                border-radius: var(--radius-lg);
-            }
-
-            .smart-form {
-                padding: 1.5rem 1rem;
-            }
-
-            .form-row {
-                grid-template-columns: 1fr;
-                gap: 0;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
+        @media(max-width:768px){
+            header{top:0;width:100%;max-width:100%}
+            nav{border-radius:0;border:none;border-bottom:1px solid var(--border)}
+            .mobile-menu-btn{display:block}
+            .hero{padding:8rem 0 3rem}
+            .hero h1{font-size:2rem}
+            .college-grid{grid-template-columns:1fr}
+            .college-details{grid-template-columns:1fr}
+            .form-row{grid-template-columns:1fr}
+            .stats-bar{flex-direction:column;gap:1.5rem}
+            .contact-strip{font-size:.8rem;padding:.6rem .5rem}
+            .contact-strip a{font-size:.95rem;display:inline-block;margin:.15rem .25rem}
+            .whatsapp-float a{width:54px;height:54px;font-size:1.6rem}
         }
     </style>
-    <!-- Vercel Analytics -->
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
-
 <body>
 
-    <!-- Ambient Backgrounds -->
     <div class="ambient-blob blob-1"></div>
     <div class="ambient-blob blob-2"></div>
 
-    <!-- Navigation -->
-    <header id="header">
+    <!-- Contact Strip -->
+    <div class="contact-strip">
+        <i class="fas fa-phone-alt"></i> Call Now:
+        <a href="tel:7855816174">7855816174</a> |
+        <a href="tel:7684015067">7684015067</a>
+        <span style="margin-left:1rem;opacity:.8;font-weight:400">— Admissions Open for 2026</span>
+    </div>
+
+    <!-- Nav -->
+    <header id="header" style="top:3.5rem">
         <nav>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-right: auto;">
-                <a href="/" title="Back to Main Page" style="color: var(--text-main); font-size: 1.5rem; text-decoration: none; padding-right: 15px; border-right: 1px solid var(--border);">
-                    <i class="fas fa-times"></i>
-                </a>
-                <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/logomycareerx.png" alt="MyCareerX Logo" style="height: 40px; width: auto; display: block;">
+            <a href="/" class="logo">
+                <img src="/logomycareerx.png" alt="MyCareerX Logo" style="height:38px;width:auto">
             </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/career-counselling">Career Counselling</a></li>
-                <li><a href="/direct-admission">Direct Admission</a></li>
-            </ul>
             <div class="nav-actions">
-                <a href="/index.html#book-session" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Book Session</a>
-                <a href="/index.html#mentors" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Find Mentor</a>
-                <button class="mobile-menu-btn menu-btn"><i class="fas fa-bars"></i></button>
+                <a href="#colleges" class="btn btn-outline btn-sm">Direct Admission</a>
+                <a href="/career-counselling" class="btn btn-outline btn-sm" style="border-color:var(--primary);color:var(--primary)">🎯 Career Counselling</a>
+                <a href="#" onclick="openModal('General Inquiry')" class="btn btn-primary btn-sm">Book Your Seat</a>
+                <button class="mobile-menu-btn" onclick="document.querySelector('.nav-actions').classList.toggle('mob-open')"><i class="fas fa-bars"></i></button>
             </div>
         </nav>
     </header>
 
-    
-    <section style="padding: 10rem 1rem 4rem 1rem; background: var(--bg-body); min-height: 80vh;">
-        <div class="container" style="max-width: 1000px; margin: 0 auto;">
-            <div class="reveal" style="text-align: center; margin-bottom: 4rem;">
-                <div class="tagline-badge" style="background: rgba(16, 185, 129, 0.1); color: #10B981; border: 1px solid rgba(16, 185, 129, 0.3); margin-bottom: 1.5rem; display: inline-flex;">
-                    <i class="fas fa-university"></i> Direct Admission 2026
-                </div>
-                <h1 style="font-size: 3rem; margin-bottom: 1.5rem; font-weight: 800;">Direct Admission in Top Private Universities</h1>
-                <p style="font-size: 1.25rem; color: var(--text-muted); line-height: 1.8; max-width: 800px; margin: 0 auto;">
-                    Navigating the competitive landscape of Indian entrances can be overwhelmingly stressful. Fortunately, for students looking to secure a seat without the extreme stress of standard cutoffs, <strong>direct admission</strong> remains a highly viable pathway. Through the management quota and institutional seats, students have the opportunity to secure their place in premier institutions like KIIT, SRM, VIT, LPU, BITS, SOA, etc.
-                </p>
-            </div>
-
-            <div class="reveal" style="background: var(--surface); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 3rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">What is Direct Admission?</h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                    <strong>Direct admission</strong> refers to the process of enrolling in an undergraduate or postgraduate program—such as B.Tech, MBA, or Medical degrees—via institution-reserved seats. These management quota seats ensure that capable students who missed out on minor margin rankings still gain access to quality education. 
-                </p>
-                <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
-                    The criteria for these seats often shift from strict entrance scores to a combination of board examination merits, personal interviews, and overall profiles. Securing a seat early eliminates the immense pressure of unpredictable counseling rounds and guarantees your academic future.
-                </p>
-            </div>
-
-            <div class="reveal" style="background: var(--surface); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 3rem;">
-                <h2 style="font-size: 2rem; margin-bottom: 1rem;">100% Transparent College Admission Guidance</h2>
-                <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1.5rem;">
-                    At MyCareerX, our <strong>college admission guidance</strong> focuses on 100% transparency. The admission landscape is unfortunately filled with unverified agents and hidden fee structures; our absolute mission is to cut through the noise and provide students and parents with direct, reliable, and verified information.
-                </p>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                    <div style="background: var(--bg-body); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
-                        <i class="fas fa-file-invoice-dollar" style="color: var(--primary); font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Transparent Fee Structures</h4>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">Clear breakdowns of management quotas, tuition fees, and hostel deposits without any hidden surprises.</p>
-                    </div>
-                    <div style="background: var(--bg-body); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border);">
-                        <i class="fas fa-chair" style="color: var(--success); font-size: 2rem; margin-bottom: 1rem;"></i>
-                        <h4 style="font-size: 1.15rem; margin-bottom: 0.5rem;">Real-Time Seat Tracking</h4>
-                        <p style="color: var(--text-muted); font-size: 0.95rem;">We provide accurate, up-to-date availability for highly demanded programs like Computer Science Engineering.</p>
-                    </div>
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="reveal">
+                <div class="tagline-badge"><i class="fas fa-university"></i> Admissions 2026 Now Open</div>
+                <h1>Get Direct Admission in<br><span>India's Top Private Colleges</span></h1>
+                <p>Skip the stress of cutoffs & counseling rounds. Secure your seat in premier private institutions through management quota — 100% transparent, verified guidance.</p>
+                <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+                    <a href="#colleges" class="btn btn-gradient"><i class="fas fa-graduation-cap"></i> Explore Colleges</a>
+                    <a href="tel:7855816174" class="btn btn-outline"><i class="fas fa-phone-alt"></i> Call: 7855816174</a>
                 </div>
             </div>
-
-            <div class="reveal" style="text-align: center; margin-top: 4rem;">
-                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Secure Your Seat at India's Top Universities</h2>
-                <p style="font-size: 1.15rem; color: var(--text-muted); line-height: 1.8; max-width: 700px; margin: 0 auto;">
-                    Don't leave your future to chance. Speak immediately with our admission experts to explore confirmed placement opportunities. Connect directly via WhatsApp or request a dedicated callback.
-                </p>
-                
-                <div class="trusted-section" style="margin-top: 3rem; margin-bottom: 3rem; background: transparent; padding: 0;">
-                    <p style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px;">Direct Admissions Across Top Institutions</p>
-                    <div class="marquee">
-                        <div class="marquee-content">
-                            <span class="marquee-item">KIIT</span>
-                            <span class="marquee-item">VIT</span>
-                            <span class="marquee-item">SRM</span>
-                            <span class="marquee-item">LPU</span>
-                            <span class="marquee-item">BITS</span>
-                            <span class="marquee-item">MIT PUNE</span>
-                            <span class="marquee-item">SOA</span>
-                        </div>
-                        <div class="marquee-content" aria-hidden="true">
-                            <span class="marquee-item">KIIT</span>
-                            <span class="marquee-item">VIT</span>
-                            <span class="marquee-item">SRM</span>
-                            <span class="marquee-item">LPU</span>
-                            <span class="marquee-item">BITS</span>
-                            <span class="marquee-item">MIT PUNE</span>
-                            <span class="marquee-item">SOA</span>
-                        </div>
-                    </div>
-                </div>
-
-                
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; width: 100%; max-width: 900px; margin-top: 3rem; margin-left: auto; margin-right: auto;" class="reveal">
-        <!-- WhatsApp Action Option -->
-        <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center; align-items: center; background: rgba(37, 211, 102, 0.04); border: 1px solid rgba(37, 211, 102, 0.2); border-radius: var(--radius-lg); padding: 2.5rem 1.5rem;">
-            <i class="fab fa-whatsapp" style="font-size: 3.5rem; color: #25D366; margin-bottom: 1rem;"></i>
-            <h3 style="margin-bottom: 0.5rem; font-size: 1.25rem;">Instant WhatsApp Chat</h3>
-            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.5rem; text-align: center;"> Get immediate answers about fees, seat availability, and application procedures right on WhatsApp.</p>
-            <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20want%20to%20know%20more%20about%20Direct%20Admission%20Enquiry." target="_blank" class="btn btn-whatsapp" style="font-size: 1.05rem; padding: 1rem 2rem; width: 100%; box-shadow: 0 10px 25px rgba(37, 211, 102, 0.25);">Connect on WhatsApp</a>
+            <div class="stats-bar reveal">
+                <div class="stat-item"><div class="num">50+</div><div class="label">Partner Colleges</div></div>
+                <div class="stat-item"><div class="num">10K+</div><div class="label">Students Placed</div></div>
+                <div class="stat-item"><div class="num">100%</div><div class="label">Transparent Fees</div></div>
+                <div class="stat-item"><div class="num">24/7</div><div class="label">Expert Support</div></div>
+            </div>
         </div>
+    </section>
 
-        <!-- Form Action Option -->
-        <div style="flex: 1; min-width: 300px; max-width: 450px; padding: 2rem; background: var(--surface); border-radius: var(--radius-lg); border: 1px solid var(--border); box-shadow: var(--shadow-md);">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; text-align: left;">Request a Free Admission Callback</h3>
-            <form id="seoInquiryFormDirectAdmissionEnquiry" onsubmit="event.preventDefault(); submitSeoForm(this, 'Direct Admission Enquiry');" style="text-align: left;">
-                <div class="input-group" style="margin-bottom: 1rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Full Name *</label>
-                    <input type="text" name="name" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+    <!-- Colleges Section -->
+    <section class="colleges-section" id="colleges">
+        <div class="container">
+            <h2 class="reveal">Top Private Institutes</h2>
+            <p class="section-sub reveal">Explore India's most sought-after private universities with verified fee structures & real-time seat availability.</p>
+            <div class="college-grid" id="collegeGrid"></div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal-overlay" id="bookingModal">
+        <div class="modal-box">
+            <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            <h3>🎓 Book Your Seat</h3>
+            <p class="modal-sub">Fill in your details — our expert will contact you within 2 hours.</p>
+            <form id="admissionForm" onsubmit="event.preventDefault();submitAdmissionForm()">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="af-name" required placeholder="Your full name">
                 </div>
-                <div class="input-group" style="margin-bottom: 1rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Phone Number *</label>
-                    <input type="tel" name="phone" class="input-control" placeholder="" required style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                <div class="form-group">
+                    <label>College Name</label>
+                    <input type="text" id="af-college" readonly placeholder="Selected college">
                 </div>
-                <div class="input-group" style="margin-bottom: 1.5rem;">
-                    <label style="font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; display: block;">Target College (Optional)</label>
-                    <input type="text" name="college" class="input-control" placeholder="Your Dream College" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 8px;">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>JEE / NEET Score</label>
+                        <input type="text" id="af-score" placeholder="e.g. 85 percentile">
+                    </div>
+                    <div class="form-group">
+                        <label>12th Percentage *</label>
+                        <input type="text" id="af-12th" required placeholder="e.g. 78%">
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 0.75rem;">Get Free Consultation</button>
-                <div class="form-msg msg-ui" style="margin-top: 1rem; text-align: center;"></div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Phone Number *</label>
+                        <input type="tel" id="af-phone" required placeholder="10-digit number">
+                    </div>
+                    <div class="form-group">
+                        <label>City / Place *</label>
+                        <input type="text" id="af-place" required placeholder="Your city">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-gradient" id="af-submit" style="width:100%;margin-top:.5rem"><i class="fas fa-paper-plane"></i> Submit & Book Seat</button>
+                <div class="form-msg" id="af-msg"></div>
             </form>
         </div>
     </div>
 
-            </div>
-        </div>
-    </section>
-        <!-- Footer -->
+    <!-- WhatsApp Float -->
+    <div class="whatsapp-float">
+        <span class="wa-tooltip">Chat with our Expert</span>
+        <a href="https://wa.me/917855816174?text=Hi%20MyCareerX!%20I%20need%20help%20with%20Direct%20Admission." target="_blank" aria-label="Chat on WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <!-- Footer -->
     <footer>
-        <div class="container reveal">
-            <div class="footer-grid">
+        <div class="container">
+            <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;margin-bottom:2rem">
                 <div>
-                    <a href="#" class="footer-logo">
-                        <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-                        MyCareerX
-                    </a>
-                    <p class="footer-desc">Where Students Meet Their Future. The premier tech-driven platform for
-                        authentic mentorship from India's brightest minds.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
+                    <a href="/" class="logo" style="margin-bottom:.75rem"><img src="/logomycareerx.png" alt="MyCareerX" style="height:36px"></a>
+                    <p style="color:var(--text-muted);max-width:320px;font-size:.9rem;margin-top:.5rem">Your trusted partner for direct college admissions. 100% transparent, verified guidance.</p>
                 </div>
-                <div class="footer-links">
-                    <h4>Platform</h4>
-                    <ul>
-                        <li><a href="#paths">Career Paths</a></li>
-                        <li><a href="/career-counselling">Career Counselling</a></li>
-                        <li><a href="/direct-admission">Direct Admission Guidance</a></li>
-                        <li><a href="/career-guidance-after-12th">After 12th Guidance</a></li>
-                        <li><a href="#mentors">Find a Mentor</a></li>
-                        <li><a href="#book-session">Book a Session</a></li>
-                        <li><a href="#how-it-works">How it Works</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Company</h4>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Press & Media</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                    </ul>
+                <div style="text-align:right">
+                    <p style="font-weight:700;margin-bottom:.4rem">📞 Contact Us</p>
+                    <p style="font-size:1.15rem;font-weight:800"><a href="tel:7855816174" style="color:var(--primary);text-decoration:none">7855816174</a> &nbsp;|&nbsp; <a href="tel:7684015067" style="color:var(--primary);text-decoration:none">7684015067</a></p>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1220,386 +291,105 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Scroll Reveal Animation (Intersection Observer is better for performance)
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+        // College Data
+        let colleges = [];
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target);
+        async function fetchColleges() {
+            try {
+                const res = await fetch('/api/colleges');
+                const data = await res.json();
+                if(data.success && data.data && data.data.length > 0) {
+                    colleges = data.data;
                 }
-            });
-        }, observerOptions);
+            } catch(e) {
+                console.error("Failed to fetch colleges", e);
+            }
+            renderColleges();
+        }
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        function renderColleges(){
+            const grid = document.getElementById('collegeGrid');
+            grid.innerHTML = colleges.map((c, i) => `
+                <div class="college-card reveal" style="animation-delay:${i*60}ms">
+                    <div class="college-header">
+                        <div class="college-icon"><img src="${c.logo}" alt="${c.name} Logo" onerror="this.onerror=null; this.parentNode.innerHTML='<i class=&quot;fas fa-university&quot;></i>';"></div>
+                        <div class="college-info">
+                            <h3>${c.name}</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> ${c.location}</div>
+                        </div>
+                    </div>
+                    <div class="college-body">
+                        <div class="college-tags">${(typeof c.courses === 'string' ? c.courses.split(',') : c.courses).map(t=>`<span class="college-tag">${t.trim()}</span>`).join('')}</div>
+                        <div class="college-details">
+                            <div class="detail-item" style="grid-column: span 2;"><div class="detail-label">Accepted Exams</div><div class="detail-value" style="color:var(--primary)">${c.exam}</div></div>
+                            <div class="detail-item" style="grid-column: span 2; background: var(--primary-light); border-color: rgba(79, 70, 229, 0.2);"><div class="detail-label" style="color:var(--primary-dark)">Academy Fees</div><div class="detail-value" style="font-size:1.25rem;color:var(--primary-dark)">${c.fees}</div></div>
+                        </div>
+                    </div>
+                    <div class="college-footer">
+                        <button class="btn btn-accent btn-sm" onclick="openModal('${c.name}')"><i class="fas fa-chair"></i> Book Your Seat</button>
+                        <a href="https://wa.me/917855816174?text=Hi!%20I%20want%20to%20know%20more%20about%20admission%20in%20${encodeURIComponent(c.name)}" target="_blank" class="btn btn-outline btn-sm" style="background:rgba(37,211,102,.06);border-color:rgba(37,211,102,.3);color:#128C7E"><i class="fab fa-whatsapp"></i> Ask Expert</a>
+                    </div>
+                </div>
+            `).join('');
+            initReveal();
+        }
 
-        // Sticky Nav logic
+        // Modal
+        function openModal(collegeName){
+            document.getElementById('af-college').value = collegeName;
+            document.getElementById('bookingModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(){
+            document.getElementById('bookingModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.getElementById('bookingModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeModal()});
+
+        // Submit Form
+        async function submitAdmissionForm(){
+            const btn = document.getElementById('af-submit');
+            const msg = document.getElementById('af-msg');
+            const payload = {
+                name: document.getElementById('af-name').value,
+                phone: document.getElementById('af-phone').value,
+                college: document.getElementById('af-college').value +
+                    ' | Score: '+(document.getElementById('af-score').value||'N/A') +
+                    ' | 12th: '+(document.getElementById('af-12th').value||'N/A') +
+                    ' | Place: '+(document.getElementById('af-place').value||'N/A')
+            };
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+            btn.disabled = true;
+            try{
+                const res = await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+                const data = await res.json();
+                if(data.success){
+                    document.getElementById('admissionForm').innerHTML = `
+                        <div style="text-align:center;padding:2rem 0">
+                            <i class="fas fa-check-circle" style="font-size:3.5rem;color:var(--success);margin-bottom:1rem"></i>
+                            <h3 style="color:var(--success);margin-bottom:.5rem">Seat Request Received!</h3>
+                            <p style="color:var(--text-muted);font-size:.95rem">Our admission expert will call you shortly on <strong>${payload.phone}</strong>.</p>
+                        </div>`;
+                } else { alert('Error: '+data.message); btn.innerHTML='<i class="fas fa-paper-plane"></i> Submit & Book Seat'; btn.disabled=false; }
+            }catch(e){ alert('Connection error.'); btn.innerHTML='<i class="fas fa-paper-plane"></i> Submit & Book Seat'; btn.disabled=false; }
+        }
+
+        // Reveal animation
+        function initReveal(){
+            const obs = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');obs.unobserve(e.target)}})},{threshold:.1});
+            document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        }
+
+        // Sticky nav
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.style.top = '0';
-                header.style.width = '100%';
-                if (window.innerWidth > 768) {
-                    header.children[0].style.borderRadius = '0';
-                    header.children[0].style.borderLeft = 'none';
-                    header.children[0].style.borderRight = 'none';
-                    header.children[0].style.borderTop = 'none';
-                }
-            } else {
-                header.style.top = '1rem';
-                if (window.innerWidth > 768) {
-                    header.style.width = 'calc(100% - 3rem)';
-                    header.children[0].style.borderRadius = '100px';
-                    header.children[0].style.border = '1px solid rgba(255, 255, 255, 0.5)';
-                }
-            }
+        window.addEventListener('scroll',()=>{
+            if(window.scrollY>50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
         });
 
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        // Add dynamic CSS for mobile active state
-        const style = document.createElement('style');
-        style.innerHTML = `
-            @media (max-width: 768px) {
-                .nav-links.mobile-active {
-                    display: flex !important;
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    flex-direction: column;
-                    background: var(--surface);
-                    padding: 2rem;
-                    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-                    border-bottom-left-radius: 16px;
-                    border-bottom-right-radius: 16px;
-                    border: 1px solid var(--border);
-                    border-top: none;
-                }
-            }
-        `;
-        document.head.appendChild(style);
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-active');
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navLinks.classList.contains('mobile-active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Close menu when clicking a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-active');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-            });
-        });
-
-        // Load Dynamic Mentors from API
-        let mentorsExpanded = false;
-
-        function toggleMentors() {
-            const hiddenCards = document.querySelectorAll('.mentor-card.dynamic-hidden');
-            const btn = document.getElementById('view-more-mentors-btn');
-
-            if (!mentorsExpanded) {
-                hiddenCards.forEach(card => card.style.display = 'block');
-                btn.textContent = 'Show Less Mentors';
-                mentorsExpanded = true;
-            } else {
-                hiddenCards.forEach(card => card.style.display = 'none');
-                btn.textContent = 'View More Mentors';
-                mentorsExpanded = false;
-
-                // Scroll back to the mentors top smoothly
-                document.getElementById('dynamic-mentors-container').scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-
-        async function loadPublicMentors() {
-            try {
-                const res = await fetch('/api/public/mentors');
-                const result = await res.json();
-
-                if (result.success && result.data.length > 0) {
-                    const container = document.getElementById('dynamic-mentors-container');
-                    const grid = document.getElementById('dynamic-mentors-grid');
-                    const viewMoreBtn = document.getElementById('view-more-mentors-btn');
-                    grid.innerHTML = ''; // clear
-
-                    result.data.forEach((mentor, index) => {
-                        const rateText = mentor.rate === '0' || !mentor.rate ? 'Free' : `₹${mentor.rate} <span style="font-size: 0.875rem; color: var(--text-muted); font-weight: 500;">/hour</span>`;
-                        const badgeType = mentor.rate === '0' || !mentor.rate ? 'badge-free' : 'badge-premium';
-                        const badgeText = mentor.rate === '0' || !mentor.rate ? 'Free Session' : 'Community';
-
-                        // Hide mentors beyond the first 3 initially
-                        const displayStyle = index >= 3 ? 'display: none;' : '';
-                        const hiddenClass = index >= 3 ? 'dynamic-hidden' : '';
-
-                        grid.innerHTML += `
-                            <div class="mentor-card ${hiddenClass}" style="animation: reveal 0.5s ease; ${displayStyle}">
-                                <span class="mentor-badge ${badgeType}">${badgeText}</span>
-                                <div class="mentor-avatar" style="background: var(--surface); color: var(--primary); border: 2px solid var(--border);"><i class="fas fa-check-circle"></i></div>
-                                <h3 class="mentor-name">${mentor.name}</h3>
-                                <p class="mentor-role">${mentor.org}</p>
-                                <div class="mentor-tags">
-                                    <span class="mentor-tag" style="background:#F1F5F9; color:#475569;">${mentor.domain}</span>
-                                    <span class="mentor-tag" style="background:#F1F5F9; color:#475569;">Exp: ${mentor.exp}yr</span>
-                                </div>
-                                <p class="mentor-price">${rateText}</p>
-                                <a href="#book-session" onclick="prefillMentor('${mentor.name}', 'Community')" class="btn btn-outline" style="width: 100%;">Book Session</a>
-                            </div>
-                        `;
-                    });
-
-                    if (result.data.length > 3) {
-                        viewMoreBtn.style.display = 'inline-block';
-                    }
-
-                    container.style.display = 'block';
-                }
-            } catch (error) {
-                console.error("Failed to fetch public mentors", error);
-            }
-        }
-
-        // Execute on load
-        document.addEventListener('DOMContentLoaded', loadPublicMentors);
-
-        // Submit Booking Form Logic
-        async function submitBooking() {
-            const form = document.getElementById('bookingForm');
-            const submitBtn = document.getElementById('submitBtn');
-            const formWrapper = form.parentElement;
-
-            // Get payload
-            const payload = {
-                name: document.getElementById('b-name').value,
-                schoolName: document.getElementById('b-school').value,
-                primaryNumber: document.getElementById('b-phone1').value,
-                secondaryNumber: document.getElementById('b-phone2').value,
-                email: document.getElementById('b-email').value,
-                tenthPercent: document.getElementById('b-10th').value,
-                twelfthPercent: document.getElementById('b-12th').value,
-                sessionType: document.getElementById('b-type').value,
-                appointmentDate: document.getElementById('b-date').value,
-                mentorRequired: document.getElementById('b-mentor').value || 'Any'
-            };
-
-            // Loading state
-            submitBtn.textContent = 'Scheduling...';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/book', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    formWrapper.innerHTML = `
-                        <div style="text-align: center; padding: 3rem 1rem; animation: reveal 0.5s ease;">
-                            <i class="fas fa-calendar-check" style="font-size: 4rem; color: var(--success); margin-bottom: 1.5rem;"></i>
-                            <h3 style="color: var(--success); margin-bottom: 1rem; font-size: 1.5rem;">Session Scheduled Successfully!</h3>
-                            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">Your appointment for <strong>${payload.appointmentDate}</strong> is confirmed. Our team will reach out on WhatsApp to finalize the time slot and share the meeting link.</p>
-                        </div>
-                    `;
-                    // Automatically scroll the user up to see the success message since the form height collapsed!
-                    formWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    alert('Error: ' + result.message);
-                    submitBtn.textContent = 'Schedule Appointment';
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Connection error. Please try again.');
-                submitBtn.textContent = 'Schedule Appointment';
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            }
-        }
-
-        // Prefill Mentor details when clicking cards
-        function prefillMentor(mentorName, sessionType) {
-            const mentorInput = document.getElementById('b-mentor');
-            const typeInput = document.getElementById('b-type');
-
-            if (mentorInput) mentorInput.value = mentorName;
-            if (typeInput) typeInput.value = sessionType;
-        }
-
-        // Submit Mentor Application Logic
-        async function submitMentor() {
-            const formWrapper = document.getElementById('mentorForm').parentElement;
-            const submitBtn = document.getElementById('submitMentorBtn');
-
-            const payload = {
-                name: document.getElementById('m-name').value,
-                org: document.getElementById('m-org').value,
-                domain: document.getElementById('m-domain').value,
-                exp: document.getElementById('m-exp').value,
-                rate: document.getElementById('m-rate').value || '0',
-                phone: document.getElementById('m-phone').value,
-                bio: document.getElementById('m-bio').value
-            };
-
-            // Loading state
-            submitBtn.textContent = 'Sending Application...';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/mentor', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    formWrapper.innerHTML = `
-                        <div style="text-align: center; padding: 3rem 1rem; animation: reveal 0.5s ease;">
-                            <i class="fas fa-user-astronaut" style="font-size: 4rem; color: var(--primary); margin-bottom: 1.5rem;"></i>
-                            <h3 style="color: var(--primary); margin-bottom: 1rem; font-size: 1.5rem;">Application Sent!</h3>
-                            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">We have received your credentials. Our vetting team will reach out to you on WhatsApp within 48 hours for onboard screening.</p>
-                        </div>
-                    `;
-                    formWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                } else {
-                    alert('Error: ' + result.message);
-                    submitBtn.textContent = 'Apply as Mentor';
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                }
-            } catch (error) {
-                console.error('Error submitting form:', error);
-                alert('Connection error. Please try again.');
-                submitBtn.textContent = 'Apply as Mentor';
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            }
-        }
-
-        // Submit Inquiry form logic
-        async function submitInquiry() {
-            const formWrapper = document.getElementById('inquiryForm').parentElement;
-            const submitBtn = document.getElementById('submitInquiryBtn');
-
-            const payload = {
-                name: document.getElementById('inq-name').value,
-                phone: document.getElementById('inq-phone').value,
-                college: document.getElementById('inq-college').value
-            };
-
-            submitBtn.textContent = 'Sending Details...';
-            submitBtn.style.opacity = '0.7';
-            submitBtn.disabled = true;
-
-            try {
-                const response = await fetch('/api/inquiry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-
-                const result = await response.json();
-
-                if (result.success) {
-                    formWrapper.innerHTML = `
-                        <div style="text-align: center; padding: 2rem 1rem; animation: reveal 0.5s ease;">
-                            <i class="fas fa-check-circle" style="font-size: 3.5rem; color: var(--success); margin-bottom: 1rem;"></i>
-                            <h3 style="color: var(--success); margin-bottom: 0.5rem; font-size: 1.3rem;">Request Received!</h3>
-                            <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Our counseling expert will call you shortly on ${payload.phone} regarding direct admissions.</p>
-                        </div>
-                    `;
-                } else {
-                    alert('Error: ' + result.message);
-                    submitBtn.textContent = 'Get Free Consultation';
-                    submitBtn.disabled = false;
-                    submitBtn.style.opacity = '1';
-                }
-            } catch (error) {
-                console.error('Error submitting inquiry:', error);
-                alert('Connection error. Please try again.');
-                submitBtn.textContent = 'Get Free Consultation';
-                submitBtn.disabled = false;
-                submitBtn.style.opacity = '1';
-            }
-        }
+        // Initialize
+        fetchColleges();
     </script>
 </body>
-
 </html>
-<script>
-    async function submitSeoForm(formElement, context) {
-        const btn = formElement.querySelector('button[type="submit"]');
-        const msg = formElement.querySelector('.msg-ui');
-        
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-        btn.style.opacity = '0.7';
-        btn.disabled = true;
-
-        const payload = {
-            name: formElement.name.value,
-            phone: formElement.phone.value,
-            college: formElement.college.value ? `[${context}] ${formElement.college.value}` : `[${context}] Target Not Specified`
-        };
-
-        try {
-            const response = await fetch('/api/inquiry', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            const data = await response.json();
-
-            if (data.success) {
-                formElement.innerHTML = `
-                    <div style="text-align: center; padding: 1rem; animation: reveal 0.5s ease;">
-                        <i class="fas fa-check-circle" style="font-size: 3.5rem; color: var(--success); margin-bottom: 1rem;"></i>
-                        <h3 style="color: var(--success); margin-bottom: 0.5rem; font-size: 1.3rem;">Request Received!</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.5;">Our counseling expert will call you shortly on ${payload.phone}.</p>
-                    </div>
-                `;
-            } else {
-                alert('Error: ' + data.message);
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-                btn.style.opacity = '1';
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            alert('Connection error. Please try again.');
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-            btn.style.opacity = '1';
-        }
-    }
-</script>

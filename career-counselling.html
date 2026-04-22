@@ -218,6 +218,11 @@
             box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.5);
         }
 
+        .btn-sm {
+            padding: 0.65rem 1.25rem !important;
+            font-size: 0.85rem !important;
+        }
+
         /* Nav */
         header {
             position: fixed;
@@ -971,11 +976,28 @@
                 border-radius: 0;
                 border: none;
                 border-bottom: 1px solid var(--border);
+                flex-wrap: wrap;
             }
 
-            .nav-links,
-            .nav-actions .btn:not(.menu-btn) {
+            .nav-actions {
+                background: var(--surface);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                padding: 1rem;
                 display: none;
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-sm);
+            }
+
+            .nav-actions.mob-open {
+                display: flex;
+            }
+
+            .nav-actions .btn {
+                width: 100%;
             }
 
             .mobile-menu-btn {
@@ -1037,24 +1059,16 @@
     <div class="ambient-blob blob-2"></div>
 
     <!-- Navigation -->
-    <header id="header">
+    <header id="header" style="top:3.5rem">
         <nav>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-right: auto;">
-                <a href="/" title="Back to Main Page" style="color: var(--text-main); font-size: 1.5rem; text-decoration: none; padding-right: 15px; border-right: 1px solid var(--border);">
-                    <i class="fas fa-times"></i>
-                </a>
-                <a href="/" class="logo" style="text-decoration: none;">
-                <img src="/logomycareerx.png" alt="MyCareerX Logo" style="height: 40px; width: auto; display: block;">
+            <a href="/" class="logo">
+                <img src="/logomycareerx.png" alt="MyCareerX Logo" style="height:38px;width:auto">
             </a>
-            </div>
-            <ul class="nav-links">
-                <li><a href="/career-counselling">Career Counselling</a></li>
-                <li><a href="/direct-admission">Direct Admission</a></li>
-            </ul>
             <div class="nav-actions">
-                <a href="/index.html#book-session" class="btn btn-outline" style="padding: 0.5rem 1.25rem;">Book Session</a>
-                <a href="/index.html#mentors" class="btn btn-primary" style="padding: 0.5rem 1.25rem;">Find Mentor</a>
-                <button class="mobile-menu-btn menu-btn"><i class="fas fa-bars"></i></button>
+                <a href="/" class="btn btn-outline btn-sm">Direct Admission</a>
+                <a href="/career-counselling" class="btn btn-outline btn-sm" style="border-color:var(--primary);color:var(--primary)">🎯 Career Counselling</a>
+                <a href="/index.html#book-session" class="btn btn-primary btn-sm">Book Your Seat</a>
+                <button class="mobile-menu-btn" onclick="document.querySelector('.nav-actions').classList.toggle('mob-open')"><i class="fas fa-bars"></i></button>
             </div>
         </nav>
     </header>

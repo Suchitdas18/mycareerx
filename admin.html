@@ -327,6 +327,7 @@
                     Student Leads</button>
                 <button class="tab-btn" onclick="switchTab('mentors')"><i class="fas fa-chalkboard-teacher"></i> Mentor
                     Applications</button>
+                <button class="tab-btn" onclick="switchTab('colleges')"><i class="fas fa-university"></i> Colleges Setup</button>
             </div>
 
             <div id="students-view" class="table-container">
@@ -361,6 +362,27 @@
                         </tr>
                     </thead>
                     <tbody id="mentors-body">
+                        <!-- Data injected here -->
+                    </tbody>
+                </table>
+            </div>
+
+            <div id="colleges-view" class="table-container" style="display: none;">
+                <div style="padding: 1rem 1.5rem; display: flex; justify-content: flex-end; border-bottom: 1px solid var(--border); background: #F8FAFC;">
+                    <button class="btn" style="width:auto; padding: 0.6rem 1.25rem;" onclick="openCollegeModal()"><i class="fas fa-plus"></i> Add New College</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:60px">#</th>
+                            <th>Logo</th>
+                            <th>College Name & Location</th>
+                            <th>Courses & Exams</th>
+                            <th>Fees</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="colleges-body">
                         <!-- Data injected here -->
                     </tbody>
                 </table>
@@ -402,11 +424,20 @@
                 document.getElementById('students-view').style.display = 'block';
                 document.getElementById('students-stats').style.display = 'grid';
                 document.getElementById('mentors-view').style.display = 'none';
-            } else {
+                document.getElementById('colleges-view').style.display = 'none';
+            } else if (tab === 'mentors') {
                 document.querySelectorAll('.tab-btn')[1].classList.add('active');
                 document.getElementById('students-view').style.display = 'none';
                 document.getElementById('students-stats').style.display = 'none';
                 document.getElementById('mentors-view').style.display = 'block';
+                document.getElementById('colleges-view').style.display = 'none';
+            } else if (tab === 'colleges') {
+                document.querySelectorAll('.tab-btn')[2].classList.add('active');
+                document.getElementById('students-view').style.display = 'none';
+                document.getElementById('students-stats').style.display = 'none';
+                document.getElementById('mentors-view').style.display = 'none';
+                document.getElementById('colleges-view').style.display = 'block';
+                fetchCollegesAdmin();
             }
         }
 
@@ -704,6 +735,271 @@
             document.getElementById('premium-bookings').textContent = premiumCount;
             document.getElementById('today-bookings').textContent = todayCount;
         }
+
+        // --- Colleges DB Management ---
+        let globalColleges = [];
+        
+        async function fetchCollegesAdmin() {
+            try {
+                const res = await fetch('/api/colleges');
+                const data = await res.json();
+                if(data.success) {
+                    globalColleges = data.data;
+                    renderCollegesAdmin(globalColleges);
+                }
+            } catch(e) { console.error("Error fetching colleges", e); }
+        }
+
+        function renderCollegesAdmin(colleges) {
+            const tbody = document.getElementById('colleges-body');
+            tbody.innerHTML = '';
+            if(colleges.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center; padding: 3rem; color: var(--text-muted);">No colleges found. Click "Add New College".</td></tr>';
+                return;
+            }
+
+            colleges.forEach((c, idx) => {
+                const tr = document.createElement('tr');
+                const isFirst = idx === 0;
+                const isLast = idx === colleges.length - 1;
+                tr.innerHTML = `
+                    <td style="text-align:center;">
+                        <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+                            <button class="college-move-btn" data-dir="up" data-idx="${idx}" style="background:none;border:none;cursor:pointer;color:${isFirst ? '#CBD5E1' : 'var(--primary)'};font-size:1rem;padding:2px;" ${isFirst ? 'disabled' : ''} title="Move Up"><i class="fas fa-chevron-up"></i></button>
+                            <span style="font-weight:700;font-size:0.9rem;color:var(--text-muted);">${idx + 1}</span>
+                            <button class="college-move-btn" data-dir="down" data-idx="${idx}" style="background:none;border:none;cursor:pointer;color:${isLast ? '#CBD5E1' : 'var(--primary)'};font-size:1rem;padding:2px;" ${isLast ? 'disabled' : ''} title="Move Down"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                    </td>
+                    <td><img src="${c.logo}" style="width: 48px; height: 48px; object-fit: contain; border-radius: 8px; border: 1px solid var(--border); padding: 4px; background:#fff;" onerror="this.src='https://via.placeholder.com/48?text=Logo'"></td>
+                    <td>
+                        <div style="font-weight: 700; color: var(--text-main);">${c.name}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);"><i class="fas fa-map-marker-alt"></i> ${c.location}</div>
+                    </td>
+                    <td>
+                        <div style="font-weight: 600; font-size: 0.85rem;"><i class="fas fa-scroll"></i> ${c.exam}</div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted);">${c.courses}</div>
+                    </td>
+                    <td style="font-weight: 700; color: var(--primary);">${c.fees}</td>
+                    <td>
+                        <button class="btn college-edit-btn" data-idx="${idx}" style="padding:0.4rem 0.6rem; background:transparent; color:var(--primary); width:auto; border:1px solid var(--primary); font-size:0.75rem;"><i class="fas fa-edit"></i></button>
+                        <button class="btn college-delete-btn" data-id="${c.id}" style="padding:0.4rem 0.6rem; background:transparent; color:#EF4444; width:auto; border:1px solid #EF4444; font-size:0.75rem;"><i class="fas fa-trash"></i></button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            // Bind edit buttons
+            tbody.querySelectorAll('.college-edit-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.idx);
+                    const college = globalColleges[idx];
+                    if(college) openCollegeModal(college);
+                });
+            });
+
+            // Bind delete buttons
+            tbody.querySelectorAll('.college-delete-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    deleteCollege(this.dataset.id);
+                });
+            });
+
+            // Bind move up/down buttons
+            tbody.querySelectorAll('.college-move-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const idx = parseInt(this.dataset.idx);
+                    const dir = this.dataset.dir;
+                    moveCollege(idx, dir);
+                });
+            });
+        }
+
+        async function moveCollege(idx, direction) {
+            const swapIdx = direction === 'up' ? idx - 1 : idx + 1;
+            if(swapIdx < 0 || swapIdx >= globalColleges.length) return;
+
+            // Swap locally
+            const temp = globalColleges[idx];
+            globalColleges[idx] = globalColleges[swapIdx];
+            globalColleges[swapIdx] = temp;
+
+            // Save new order to server
+            const newOrder = globalColleges.map(c => c.id);
+            try {
+                const res = await fetch('/api/admin/colleges', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ token: adminToken, action: 'reorder', newOrder })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    renderCollegesAdmin(globalColleges);
+                } else {
+                    alert('Error: ' + data.message);
+                    fetchCollegesAdmin(); // revert
+                }
+            } catch(e) {
+                alert('Connection error');
+                fetchCollegesAdmin(); // revert
+            }
+        }
+
+        async function deleteCollege(id) {
+            if(!confirm("Are you sure you want to remove this college?")) return;
+            try {
+                const res = await fetch('/api/admin/colleges', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ token: adminToken, action: 'delete', collegeId: id })
+                });
+                const data = await res.json();
+                if(data.success) fetchCollegesAdmin();
+                else alert("Error: " + data.message);
+            } catch(e) { alert("Connection Error"); }
+        }
+
+        function openCollegeModal(collegeObj) {
+            currentEditType = 'custom_college';
+            const cInfo = collegeObj || {id:'', name:'', location:'', courses:'', fees:'', exam:'', logo:''};
+            currentEditRowIndex = cInfo.id || '';
+
+            const fieldsContainer = document.getElementById('edit-fields');
+            document.getElementById('edit-title').innerText = collegeObj ? 'Edit College' : 'Add New College';
+            
+            // Custom form layout - use DOM to avoid quote escaping issues
+            fieldsContainer.innerHTML = '';
+            
+            function makeField(label, id, value, type, placeholder) {
+                const wrap = document.createElement('div');
+                wrap.style.cssText = 'display:flex;flex-direction:column;gap:0.25rem;';
+                const lbl = document.createElement('label');
+                lbl.style.cssText = 'font-size:0.875rem;font-weight:600;color:var(--text-muted);';
+                lbl.textContent = label;
+                wrap.appendChild(lbl);
+                if(type === 'textarea') {
+                    const ta = document.createElement('textarea');
+                    ta.className = 'input-control';
+                    ta.id = id;
+                    ta.style.cssText = 'margin:0;height:80px;';
+                    ta.value = value || '';
+                    ta.placeholder = placeholder || '';
+                    wrap.appendChild(ta);
+                } else {
+                    const inp = document.createElement('input');
+                    inp.type = type || 'text';
+                    inp.className = 'input-control';
+                    inp.id = id;
+                    inp.style.margin = '0';
+                    inp.value = value || '';
+                    inp.placeholder = placeholder || '';
+                    if(id !== 'c-file') inp.required = true;
+                    wrap.appendChild(inp);
+                }
+                return wrap;
+            }
+
+            fieldsContainer.appendChild(makeField('College Name', 'c-name', cInfo.name));
+            fieldsContainer.appendChild(makeField('Location (City, State)', 'c-loc', cInfo.location));
+
+            // Fees + Exam row
+            const feeRow = document.createElement('div');
+            feeRow.style.cssText = 'display:flex;gap:1rem;';
+            feeRow.appendChild(makeField('Official Fees', 'c-fees', cInfo.fees, 'text', 'e.g. ₹2.5L/year'));
+            feeRow.appendChild(makeField('Entrance Exams', 'c-exam', cInfo.exam));
+            fieldsContainer.appendChild(feeRow);
+
+            fieldsContainer.appendChild(makeField('Courses (Comma separated)', 'c-courses', cInfo.courses));
+            fieldsContainer.appendChild(makeField('College Bio / Description', 'c-bio', cInfo.bio || '', 'textarea', 'Brief description of the college...'));
+
+            // Logo upload
+            const logoWrap = document.createElement('div');
+            logoWrap.style.cssText = 'display:flex;flex-direction:column;gap:0.25rem;';
+            logoWrap.innerHTML = '<label style="font-size:0.875rem;font-weight:600;color:var(--text-muted);">Upload College Logo / Photo</label>';
+            const fileInp = document.createElement('input');
+            fileInp.type = 'file';
+            fileInp.id = 'c-file';
+            fileInp.accept = 'image/*';
+            fileInp.className = 'input-control';
+            fileInp.style.margin = '0';
+            logoWrap.appendChild(fileInp);
+            const hiddenLogo = document.createElement('input');
+            hiddenLogo.type = 'hidden';
+            hiddenLogo.id = 'c-logo';
+            hiddenLogo.value = cInfo.logo || '';
+            logoWrap.appendChild(hiddenLogo);
+            const hint = document.createElement('div');
+            hint.style.cssText = 'font-size:0.75rem;color:var(--text-muted);';
+            hint.textContent = 'Select a file to upload a new logo. Leave empty to keep the current one.';
+            logoWrap.appendChild(hint);
+            fieldsContainer.appendChild(logoWrap);
+
+            // Preview
+            const preview = document.createElement('div');
+            preview.id = 'c-preview';
+            preview.style.cssText = 'height:60px;text-align:left;';
+            if(cInfo.logo) {
+                const img = document.createElement('img');
+                img.src = cInfo.logo;
+                img.style.cssText = 'height:100%;border-radius:8px;';
+                preview.appendChild(img);
+            }
+            fieldsContainer.appendChild(preview);
+            
+            // Async upload logic to base64
+            document.getElementById('c-file').addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if(file) {
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                        document.getElementById('c-logo').value = evt.target.result;
+                        document.getElementById('c-preview').innerHTML = '<img src="'+evt.target.result+'" style="height: 100%; border-radius: 8px;">';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            document.getElementById('edit-modal').style.display = 'flex';
+        }
+
+        // We hook into the global saveEdit() to intercept Colleges.
+        const originalSaveEdit = saveEdit;
+        saveEdit = async function() {
+            if(currentEditType !== 'custom_college') {
+                return originalSaveEdit();
+            }
+
+            const btn = document.getElementById('save-edit-btn');
+            btn.innerHTML = 'Saving... <i class="fas fa-spinner fa-spin"></i>';
+            btn.disabled = true;
+
+            const cData = {
+                name: document.getElementById('c-name').value,
+                location: document.getElementById('c-loc').value,
+                fees: document.getElementById('c-fees').value,
+                exam: document.getElementById('c-exam').value,
+                courses: document.getElementById('c-courses').value,
+                logo: document.getElementById('c-logo').value || 'https://via.placeholder.com/150',
+                bio: document.getElementById('c-bio').value || ''
+            };
+
+            const action = currentEditRowIndex ? 'update' : 'create';
+
+            try {
+                const res = await fetch('/api/admin/colleges', {
+                    method: 'POST',
+                    headers: {'Content-Type':'application/json'},
+                    body: JSON.stringify({ token: adminToken, action, collegeId: currentEditRowIndex, collegeData: cData })
+                });
+                const data = await res.json();
+                if(data.success) {
+                    closeEditModal();
+                    fetchCollegesAdmin();
+                } else alert("Error: " + data.message);
+            } catch(e) { alert("Connection error."); }
+            btn.innerHTML = 'Save Changes';
+            btn.disabled = false;
+        };
+
     </script>
 </body>
 

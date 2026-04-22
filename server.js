@@ -3,13 +3,23 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const { google } = require('googleapis');
 const path = require('path');
-
+const fs = require('fs');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(cors());
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
+
+// Route / to the admission page (main page)
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'direct-admission.html'));
+});
+// Friendly URL for career counselling
+app.get('/career-counselling', (req, res) => {
+    res.sendFile(path.join(__dirname, 'career-counselling.html'));
+});
+
 app.use(express.static(path.join(__dirname))); 
 
 // Google Sheets Configuration
@@ -343,6 +353,78 @@ app.get('/api/public/mentors', async (req, res) => {
     } catch (error) {
         console.error('Error fetching public mentors:', error);
         res.status(500).json({ success: false, data: [] });
+    }
+});
+
+// Colleges DB helpers
+const COLLEGES_DB_PATH = path.join(__dirname, 'colleges_db.json');
+function readColleges() {
+    try {
+        if (!fs.existsSync(COLLEGES_DB_PATH)) return [];
+        return JSON.parse(fs.readFileSync(COLLEGES_DB_PATH, 'utf8'));
+    } catch(e) { return []; }
+}
+function writeColleges(data) {
+    fs.writeFileSync(COLLEGES_DB_PATH, JSON.stringify(data, null, 4), 'utf8');
+}
+
+// Get all colleges (Public API)
+app.get('/api/colleges', (req, res) => {
+    res.json({ success: true, data: readColleges() });
+});
+
+// Admin Operations for Colleges (Create, Update, Delete)
+app.post('/api/admin/colleges', (req, res) => {
+    try {
+        const { token, action, collegeId, collegeData } = req.body;
+        const ADMIN_PASS = process.env.ADMIN_PASSWORD || 'secret123';
+        if (token !== ADMIN_PASS) {
+            return res.status(401).json({ success: false, message: 'Unauthorized' });
+        }
+
+        let colleges = readColleges();
+
+        if (action === 'create') {
+            const newCollege = { id: Date.now().toString(), ...collegeData };
+            colleges.push(newCollege);
+            writeColleges(colleges);
+            res.json({ success: true, message: 'College added smoothly!' });
+        } 
+        else if (action === 'update') {
+            const index = colleges.findIndex(c => c.id === collegeId);
+            if(index > -1) {
+                colleges[index] = { ...colleges[index], ...collegeData };
+                writeColleges(colleges);
+                res.json({ success: true, message: 'College updated!' });
+            } else {
+                res.status(404).json({ success: false, message: 'College not found.' });
+            }
+        } 
+        else if (action === 'delete') {
+            colleges = colleges.filter(c => c.id !== collegeId);
+            writeColleges(colleges);
+            res.json({ success: true, message: 'College removed.' });
+        }
+        else if (action === 'reorder') {
+            const { newOrder } = req.body; // array of IDs in desired order
+            if(!newOrder || !Array.isArray(newOrder)) {
+                return res.status(400).json({ success: false, message: 'newOrder array required' });
+            }
+            const reordered = [];
+            for(const id of newOrder) {
+                const found = colleges.find(c => c.id === id);
+                if(found) reordered.push(found);
+            }
+            // append any colleges that weren't in newOrder (safety net)
+            for(const c of colleges) {
+                if(!reordered.find(r => r.id === c.id)) reordered.push(c);
+            }
+            writeColleges(reordered);
+            res.json({ success: true, message: 'Order updated!' });
+        }
+    } catch(err) {
+        console.error('Colleges Admin Error:', err);
+        res.status(500).json({ success: false, message: 'Database error' });
     }
 });
 
