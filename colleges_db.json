@@ -1,0 +1,172 @@
+[
+    {
+        "id": "1",
+        "name": "BITS Pilani",
+        "location": "Pilani / Goa / Hyderabad",
+        "courses": "B.E., M.E., MBA",
+        "fees": "₹5.5L/year",
+        "exam": "BITSAT",
+        "logo": "https://www.google.com/s2/favicons?domain=bits-pilani.ac.in&sz=128",
+        "bio": "BITS Pilani is one of India's leading higher education institutes and a deemed university under Sec 3 of the UGC act."
+    },
+    {
+        "id": "10",
+        "name": "KIIT Bhubaneswar",
+        "location": "Bhubaneswar, Odisha",
+        "courses": "B.Tech, MCA, MBA, Law",
+        "fees": "₹4.1L/year",
+        "exam": "KIITEE",
+        "logo": "https://www.google.com/s2/favicons?domain=kiit.ac.in&sz=128",
+        "bio": "Kalinga Institute of Industrial Technology is a prestigious institute known for quality education and placements."
+    },
+    {
+        "id": "2",
+        "name": "RVCE Bangalore",
+        "location": "Bangalore, Karnataka",
+        "courses": "B.E., M.Tech, MCA",
+        "fees": "₹2.5L/year",
+        "exam": "COMEDK",
+        "logo": "data:image/jpeg;base64,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",
+        "bio": ""
+    },
+    {
+        "id": "3",
+        "name": "COEP Pune",
+        "location": "Pune, Maharashtra",
+        "courses": "B.Tech, M.Tech, MBA",
+        "fees": "₹1.6L/year",
+        "exam": "MHTCET",
+        "logo": "https://www.google.com/s2/favicons?domain=coep.org.in&sz=128",
+        "bio": "College of Engineering Pune is an autonomous college of the Government of Maharashtra."
+    },
+    {
+        "id": "4",
+        "name": "IIIT Hyderabad",
+        "location": "Hyderabad, Telangana",
+        "courses": "B.Tech, MS, Ph.D",
+        "fees": "₹4.5L/year",
+        "exam": "UGEE",
+        "logo": "https://www.google.com/s2/favicons?domain=iiit.ac.in&sz=128",
+        "bio": "International Institute of Information Technology, Hyderabad is a premier research university."
+    },
+    {
+        "id": "5",
+        "name": "Shiv Nadar University",
+        "location": "Delhi NCR",
+        "courses": "B.Tech, B.Sc, BMS",
+        "fees": "₹3.5L/year",
+        "exam": "JEE / SNUSAT",
+        "logo": "https://www.google.com/s2/favicons?domain=snu.edu.in&sz=128",
+        "bio": "A comprehensive, multidisciplinary, research-focused, and student-centric University."
+    },
+    {
+        "id": "6",
+        "name": "VIT Vellore",
+        "location": "Vellore, Tamil Nadu",
+        "courses": "B.Tech, M.Tech, MBA",
+        "fees": "₹1.98L/year",
+        "exam": "VITEEE",
+        "logo": "https://www.google.com/s2/favicons?domain=vit.ac.in&sz=128",
+        "bio": "Vellore Institute of Technology is highly ranked among private engineering institutions in India."
+    },
+    {
+        "id": "7",
+        "name": "SRM Chennai",
+        "location": "Chennai, Tamil Nadu",
+        "courses": "B.Tech, M.Tech, MBA",
+        "fees": "₹4.5L/year",
+        "exam": "SRMJEE",
+        "logo": "https://www.google.com/s2/favicons?domain=srmist.edu.in&sz=128",
+        "bio": "SRM Institute of Science and Technology is a top-ranking deemed-to-be university."
+    },
+    {
+        "id": "8",
+        "name": "NMIMS Mumbai",
+        "location": "Mumbai, Maharashtra",
+        "courses": "B.Tech, MBA, BBA",
+        "fees": "₹5L/year",
+        "exam": "NCET / Mains",
+        "logo": "https://www.google.com/s2/favicons?domain=nmims.edu&sz=128",
+        "bio": "Narsee Monjee Institute of Management Studies is a widely recognized multidisciplinary university."
+    },
+    {
+        "id": "9",
+        "name": "Manipal",
+        "location": "Manipal, Karnataka",
+        "courses": "B.Tech, MBBS, MBA",
+        "fees": "₹2L/year",
+        "exam": "MET",
+        "logo": "https://www.google.com/s2/favicons?domain=manipal.edu&sz=128",
+        "bio": "Manipal Academy of Higher Education is synonymous with excellence in higher education."
+    },
+    {
+        "id": "11",
+        "name": "SOA UNIVERSITY | ITER",
+        "location": "Bhubaneswar, Odisha",
+        "courses": "B.Tech, MBBS, MBA",
+        "fees": "2.5L/year",
+        "exam": "SAAT",
+        "logo": "https://www.google.com/s2/favicons?domain=soa.ac.in&sz=128",
+        "bio": "Siksha 'O' Anusandhan is a deemed university highly ranked in India for engineering and medical courses."
+    },
+    {
+        "id": "12",
+        "name": "LPU Punjab",
+        "location": "Jalandhar, Punjab",
+        "courses": "B.Tech, MBA, B.Des",
+        "fees": "₹3L/year",
+        "exam": "LPUNEST",
+        "logo": "https://www.google.com/s2/favicons?domain=lpu.in&sz=128",
+        "bio": "Lovely Professional University is one of the largest private universities in India."
+    },
+    {
+        "id": "13",
+        "name": "DY Patil Pune",
+        "location": "Pune, Maharashtra",
+        "courses": "B.Tech, MBBS, MBA",
+        "fees": "₹2.5L/year",
+        "exam": "JEE / CET",
+        "logo": "https://www.google.com/s2/favicons?domain=dpu.edu.in&sz=128",
+        "bio": "Dr. D. Y. Patil Vidyapeeth focuses on providing high-quality educational facilities."
+    },
+    {
+        "id": "14",
+        "name": "Sharda University",
+        "location": "Greater Noida, UP",
+        "courses": "B.Tech, MBA, B.Des",
+        "fees": "₹4.90L/year",
+        "exam": "SUAT / JEE",
+        "logo": "https://www.google.com/s2/favicons?domain=sharda.ac.in&sz=128",
+        "bio": "Sharda University offers multi-disciplinary programs with global recognition."
+    },
+    {
+        "id": "15",
+        "name": "Amrita University",
+        "location": "Coimbatore, Tamil Nadu",
+        "courses": "B.Tech, MBA, M.Tech",
+        "fees": "₹1.5L/year",
+        "exam": "AEEE / JEE",
+        "logo": "https://www.google.com/s2/favicons?domain=amrita.edu&sz=128",
+        "bio": "Amrita Vishwa Vidyapeetham is a multi-campus, multi-disciplinary research academia."
+    },
+    {
+        "id": "16",
+        "name": "MIT WPU Pune",
+        "location": "Pune, Maharashtra",
+        "courses": "B.Tech, MBA, B.Des",
+        "fees": "₹3.90L/year",
+        "exam": "WPU CET / JEE / CET",
+        "logo": "https://www.google.com/s2/favicons?domain=mitwpu.edu.in&sz=128",
+        "bio": "MIT World Peace University is known for combining academic excellence with peace studies."
+    },
+    {
+        "id": "17",
+        "name": "Thapar University",
+        "location": "Patiala, Punjab",
+        "courses": "B.Tech, MBA, M.Tech",
+        "fees": "₹2L/year",
+        "exam": "JEE Main",
+        "logo": "https://www.google.com/s2/favicons?domain=thapar.edu&sz=128",
+        "bio": "Thapar Institute of Engineering and Technology is a top tier engineering institute."
+    }
+]
