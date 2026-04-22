@@ -26,10 +26,6 @@
             "use": "@vercel/static"
         },
         {
-            "src": "direct-admission.html",
-            "use": "@vercel/static"
-        },
-        {
             "src": "career-guidance-after-12th.html",
             "use": "@vercel/static"
         },
@@ -69,11 +65,11 @@
         },
         {
             "src": "/direct-admission",
-            "dest": "/direct-admission.html"
+            "dest": "/index.html"
         },
         {
             "src": "/direct-admission.html",
-            "dest": "/direct-admission.html"
+            "dest": "/index.html"
         },
         {
             "src": "/career-guidance-after-12th",
@@ -88,7 +84,7 @@
         },
         {
             "src": "/(.*)",
-            "dest": "/direct-admission.html"
+            "dest": "/index.html"
         }
     ]
 }

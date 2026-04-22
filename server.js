@@ -13,7 +13,7 @@ app.use(bodyParser.json({ limit: '10mb' }));
 
 // Route / to the admission page (main page)
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'direct-admission.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 // Friendly URL for career counselling
 app.get('/career-counselling', (req, res) => {
